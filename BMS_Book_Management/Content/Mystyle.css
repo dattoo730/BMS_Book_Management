@@ -1,2 +1,38 @@
-﻿body {
+﻿/*------------------------------Dieng CSS-----------------------------------------*/
+.body-background {
+    background-color: #f8f8f8;
 }
+.login-panel {
+    margin-top: 25%;
+}
+.login-padding{
+    padding-top:10px;
+}
+.login-margin {
+    margin-bottom: 15px;
+}
+.login-panel-title{
+    color: darkgreen;
+    font-size: 2em;
+    padding-left: 20%;
+}
+#login-box-shadow {
+    box-shadow: 3px 3px 3px #666;
+}
+.logininput-hieght {
+    height: 50px;
+}
+.loginbn-hieght {
+    height: 50px;
+    padding-top: 15px;
+}
+.panel-heading hr {
+    background-image: linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,0.2),rgba(0,0,0,0));
+    height:1px;
+}
+
+
+
+/*------------------------------END-----------------------------------------*/
+/*------------------------------DAT CSS-----------------------------------------*/
+/*------------------------------END-----------------------------------------*/
