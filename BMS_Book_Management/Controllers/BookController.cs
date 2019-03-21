@@ -9,7 +9,11 @@ namespace BMS_Book_Management.Controllers
     public class BookController : Controller
     {
         // GET: Book
-        public ActionResult Category()
+        public ActionResult ManageCategory()
+        {
+            return View();
+        }
+        public ActionResult AddBook()
         {
             return View();
         }

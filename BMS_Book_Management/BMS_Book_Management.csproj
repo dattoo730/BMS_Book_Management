@@ -138,6 +138,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\additional-methods.min.js" />
     <Content Include="Content\bootstrap-3.1.1\css\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-3.1.1\css\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap-3.1.1\css\bootstrap.css" />
@@ -201,6 +202,7 @@
     <Content Include="Content\font-awesome\scss\_spinning.scss" />
     <Content Include="Content\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\font-awesome\scss\_variables.scss" />
+    <Content Include="Content\jquery.validate.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -227,6 +229,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Book\ManageCategory.cshtml" />
+    <Content Include="Views\Book\AddBook.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

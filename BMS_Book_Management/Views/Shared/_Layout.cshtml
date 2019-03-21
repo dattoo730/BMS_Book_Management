@@ -8,6 +8,11 @@
     <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <link href="~/Content/MyStyle.css" rel="stylesheet" />
+   <style>
+       .error{
+           color: tomato;
+       }
+   </style>
 </head>
 <body>
     <div id="wrapper">
@@ -52,7 +57,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <a href="@Url.Action("Index","Login")"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -102,13 +107,14 @@
             @RenderBody()
         </div>
     </div>
-    <!-- /#wrapper -->
-    <!-- jQuery -->
-    <script src="~/Content/bootstrap-3.1.1/js/jquery.min.js"></script>
-    <!-- Bootstrap Core JavaScript -->
+   
+    <script src="~/Content/bootstrap-3.1.1/js/jquery.min.js"></script>   
     <script src="~/Content/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script src="~/Content/jquery.validate.min.js"></script>
+    <script src="~/Content/additional-methods.min.js"></script>
+    <script src="~/Content/MyJs.js"></script>
 
-   @* <script src="~/Content/MyJs.js"></script>*@
+  
 
 </body>
 
