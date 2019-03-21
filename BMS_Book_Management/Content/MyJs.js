@@ -147,5 +147,43 @@ $("#addingbookformid").validate({
 /*----------------------DAT - LAYOUT - END  -----------------------*/
 
 /*----------------------DIENG - ... - BEGIN-----------------------*/
+//Login Form Validation-Begin
 
+$("#loginformid").validate({
+    rules: {
+        email: {
+            required: true,
+            minlength: 9,
+            maxlength: 20,
+            email: true
+        },
+        password: {
+            required: true,
+            minlength: 8,
+            maxlength: 20,
+        },
+       
+    },
+
+    messages: {
+        email: {
+            required: "Please provide a email as username",
+            minlength: "Username must be at least 9 characters long",
+            maxlength: "Username must be maximum 20 characters long",
+            email: "Please enter valid email as a username! "
+        },
+        password: {
+            required: "Please provide a password",
+            minlength: "Password must be at least 8 characters long",
+            maxlength: "Password must be maximum 20 characters long"
+        }
+    },
+
+    submitHandler: function (form) {
+        alert("All Ok");
+        form.submit();
+    }
+});
+
+  //Login Form Validation-End
 /*----------------------DIENG - ... - END  -----------------------*/
