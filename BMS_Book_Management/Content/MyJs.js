@@ -57,7 +57,7 @@ $.validator.addMethod("AllNumberInteger", function (value, element) {
 }, );
 
 $.validator.addMethod("NotAcceptedSpecialCharaters", function (value, element) {
-    return this.optional(element) || /^[a-zA-Z]*$/.test(value);
+    return this.optional(element) || /^\w+$/i.test(value);
 }, );
 
 $("#addingbookformid").validate({
@@ -138,6 +138,7 @@ $("#addingbookformid").validate({
     },
 
     submitHandler: function (form) {
+        alert("All Ok");
         form.submit();
     }
 });
