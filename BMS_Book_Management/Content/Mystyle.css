@@ -494,5 +494,31 @@ table.dataTable thead .sorting_desc_disabled {
 
 
 /*----------------------DIENG - ... - BEGIN-----------------------*/
+/*Datatable css*/
 
+.manage-th3 {
+    width: 30%;
+}
+.manage-th1 {
+    width: 10%;
+}
+.manage-th2 {
+    width: 20%;
+}
+.gradeA a {
+    cursor: pointer;
+}
+.gradeA p {
+    margin-bottom: 0px;
+}
+.datatable-padding{
+    padding-top: 20px;
+    padding-bottom:30px;
+}
+
+/*Home css*/
+
+
+
+/*End datatable css*/
 /*----------------------DIENG - ... - END  -----------------------*/

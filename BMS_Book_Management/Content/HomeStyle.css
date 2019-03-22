@@ -1,0 +1,155 @@
+﻿body {
+    background-color: #222;
+    font-size: 12px;
+    line-height: 18px;
+    font-family: arial, sans-serif;
+    color: #383838;
+}
+
+.content-backgroud {
+    background: linear-gradient(to right, #f0f0f0, #ffff, #ffff, #f0f0f0);
+    height: auto;
+}
+.title-font {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 4em;
+}
+.menu-font {
+    font-family: "Times New Roman", Times, serif;
+    font-size:18px;
+    color:black;
+}
+.menu-font > li > a {
+    color: black;
+}
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.size-div {
+    width: 100%;
+    height: 30px;
+}
+
+.left-bnt {
+    width: 60%;
+}
+.right-bnt {
+    width: 40%;
+}
+
+.buy-btn {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    font-size: 12px;
+    height: 33px;
+    text-align: center;
+    background-color: #030716;
+    padding-top: 8px;
+    color: #fff;
+}
+
+.price-bnt {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    height: 33px;
+    background-color: #076DB1;
+}
+
+.book-name {
+    font-size: 12px;
+    line-height: 20px;
+    color: #0182b5;
+    font-family: 'Georgia', Arial, serif;
+    display: block;
+}
+.author {
+    font-size: 11px;
+    line-height: 14px;
+    color: #3d3d3d;
+    font-family: 'Georgia', Arial, serif;
+    padding: 0 0 9px 1px;
+    display: block;
+}
+.description {
+    font-size: 11px;
+    line-height: 16px;
+    color: #878787;
+    height:50px;
+}
+.thumbnail img {
+    width:105px;
+    height:155px;
+    padding-top:10px;
+}
+
+
+#header {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+#header:first-child {
+    padding-top: 30px;
+}
+#logo {
+    width: 238px;
+    float: left;
+    display: inline;
+    margin-left: -4px;
+    position: relative;
+}
+
+#logo span {
+    position: absolute;
+    bottom: -17px;
+    right: -1px;
+    font-size: 11px;
+    line-height: 20px;        
+}
+
+ #logo span a {
+    color: #44acd5;
+}
+
+#logo h1 a {
+    display: block;
+    height: 41px;
+    background: url(Images/logo.png);
+    text-indent: -4000px;
+    font-size: 0;
+    line-height: 0;      
+}
+
+#sidebar h4 {
+    border-bottom: solid 4px #eaeaea;
+    padding: 0 0 8px 1px;
+    font-family: 'Georgia', Arial, serif;
+    font-style: italic;
+    line-height: 17px;
+    color: #0871b3;
+    font-weight: normal;
+}
+
+#sidebar .categories { list-style: none; }
+#sidebar .categories ul { padding: 8px 0 29px; list-style: none; line-height: 24px; font-size: 12px; color: #929292; }
+#sidebar .categories ul li { border-bottom: solid 1px #d8d8d8; background: url(Images/list-image.png) no-repeat 0 center; padding-left: 18px; }
+#sidebar .categories ul li a { color: #929292; }
+
+#content h3 {
+    padding: 0 0 7px 3px;
+    margin-top: 3px;
+    margin-bottom: 12px;
+    border-bottom: solid 4px #eaeaea;
+    font-family: 'Georgia', Arial, serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 24px;
+    color: #0182b5;
+}
