@@ -2,5 +2,57 @@
 
     ViewBag.Title = "Update Category";
 }
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-header arrow-left">
+            <a class="fa fa-arrow-left"></a>
+            <h3> Update Book</h3>
+        </div>
+    </div>
+</div>
+<div class="row datatable-padding">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Edit book</h4>
+            </div>
+            <div class="panel-body">
+                <div class="panel-body-create">
+                    <from method="post" role="form">
+                        <fieldset>
+                            <div class="form-group row">
+                                <label class="col-md-3 text-right">Category name</label>
+                                <div class="col-md-9">
+                                    <input class="form-control" placeholder="CateName">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 text-right">Description</label>
+                                <div class="col-md-9">
+                                    <textarea name="" id="" class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 text-right">IsActive</label>
+                                <div class="col-md-9">
+                                    <select name="" id="" class="form-control">
+                                        <option value="1">True</option>
+                                        <option value="2">False</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button type="button" class="btn btn btn-success bnt-magin">Update</button>
+                                    <button type="button" class="btn btn-default">Cancel</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </from>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h1>Edit Category</h1>
+
