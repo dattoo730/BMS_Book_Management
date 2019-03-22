@@ -8,6 +8,10 @@
     <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <link href="~/Content/MyStyle.css" rel="stylesheet" />
+
+    <!-- Datatable CSS -->
+    @*<link href="~/Content/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css" rel="stylesheet" />*@
+    <link href="~/Content/DataTables/datatables.min.css" rel="stylesheet" />
 </head>
 <body>
     <div id="wrapper">
@@ -108,7 +112,17 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="~/Content/bootstrap-3.1.1/js/bootstrap.min.js"></script>
 
-   @* <script src="~/Content/MyJs.js"></script>*@
+    <!-- Datatable JavaScript -->
+    <script src="~/Content/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
+
+    @* <script src="~/Content/MyJs.js"></script>*@
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-ManageBook').DataTable({
+                responsive: true
+            });
+        });
+    </script>
 
 </body>
 
