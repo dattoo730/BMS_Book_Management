@@ -1,6 +1,167 @@
 ﻿@{
-
-    ViewBag.Title = "Update Account";
+    Layout = null;
+   
 }
+<script>
 
-<h1>Edit Account</h1>
+    $("#changeavataformid").validate({
+        rules: {
+            avatar: {
+                required: true,
+                extension: "jpg|png"
+            }
+        },
+
+        messages: {
+            avatar: {
+                required: "Please choose a image for your avatar",
+                extension: "Please choose a valid image (png, jpg)."
+            }
+        },
+        submitHandler: function (form) {
+            alert("All Ok");
+            form.submit();
+        }
+    });
+
+    $("#updateprofileformid").validate({
+        rules: {
+            username: {
+                required: true,
+                minlength: 9,
+                maxlength: 50,
+                NotAcceptedSpecialCharaters: true
+            },
+            email: {
+                required: true,
+                minlength: 9,
+                maxlength: 50,
+                email: true
+            },
+            fullname: {
+                required: true,
+                minlength: 5,
+                maxlength: 20,
+                NotAcceptedSpecialCharaters: true
+            },
+            phone: {
+                required: true,
+                AllNumberInteger: true,
+                minlength:10,
+                maxlength: 10
+            },
+            address: {
+                minlength: 5,
+                maxlength: 50,
+            },
+            birthday: {
+
+            },
+            status: {
+                required: true,
+            },
+
+        },
+
+        messages: {
+            username: {
+                required: "Please provide a username",
+                minlength: "Username must be at least 9 characters long",
+                maxlength: "Username must be maximum 50 characters long",
+                NotAcceptedSpecialCharaters: "Please enter valid Username. No special character allowed. "
+            },
+            email: {
+                required: "Please provide a email as username",
+                minlength: "Username must be at least 9 characters long",
+                maxlength: "Username must be maximum 50 characters long",
+                email: "Please enter valid email as a username! "
+            },
+            fullname: {
+                required: "Please provide a full name",
+                minlength: "Full name must be at least 5 characters long",
+                maxlength: "Full name must be maximum 20 characters long",
+                NotAcceptedSpecialCharaters: "Please enter valid full name. No special character allowed. "
+            },
+            phone: {
+                required: "Please provide a phone number",
+                minlength: "Phone number must be at least 10 characters long",
+                maxlength: "Phone number must be maximum 10 characters long",
+                AllNumberInteger: "Please enter a valid phone number."
+            },
+            address: {               
+                minlength: "Address must be at least 5 characters long",
+                maxlength: "Address must be maximum 50 characters long",
+            },
+            birthday: {
+               
+            },
+            status: {
+                required: "Please provide a status",
+            },
+        },
+
+        submitHandler: function (form) {
+            alert("All Ok");
+            form.submit();
+        }
+    });
+</script>
+    <div class="col-lg-4" style="text-align: center;">
+        <form id="changeavataformid" role="form">
+            <img id="img-avatar-id" src="~/Content/Images/noavatar.jpg" style="border-radius: 50%; width: 200px;height: 200px;margin-bottom: 15px;">
+            <input onchange="ShowImageFromFile(this, '#img-avatar-id')" id="img-avatar-file-id" type="file" name="avatar" value="" />
+            <input type="submit" value="Save" class="le-button" />
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 ">
+                <div @*class="panel panel-default"*@>                  
+                    <div class="panel-body">
+                        <form id="updateprofileformid" role="form">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="" name="username" value="" type="text" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="" name="email" value="" type="email" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="" name="fullname" value="" type="text" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="" name="phone" value="" type="text" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="" name="address" value="" type="text" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="" name="birthday" type="date" value="" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <select readonly name="gender" class="form-control">
+                                        <option value="1">Nam</option>
+                                        <option value="2">Nữ</option>
+                                        <option value="3">3D</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select readonly name="status" class="form-control">
+                                        <option value="1">Actived</option>
+                                        <option value="2">Blocked</option>                                        
+                                    </select>
+                                </div>
+
+                                <button type="submit" href="#" class="btn btn-lg btn-success btn-block">Update</button>
+                            </fieldset>
+                        </form>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
