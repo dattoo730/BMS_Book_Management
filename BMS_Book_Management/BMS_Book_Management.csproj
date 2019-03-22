@@ -198,9 +198,9 @@
     <Content Include="Content\Images\list-image.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\LoginStyle.css" />
-    <Content Include="Content\MyJs.js" />
-    <Content Include="Content\MyStyle.css" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\MyJsHome.js" />
+    <Content Include="Content\MyJsAdmin.js" />
+    <Content Include="Content\MyStyleAdmin.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
