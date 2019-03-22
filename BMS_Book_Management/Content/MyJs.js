@@ -49,8 +49,141 @@ $(function () {
     }
 });
   //sb - admin - 2 END
+
+  //Add Book Form Validation-Begin
+
+$.validator.addMethod("AllNumberInteger", function (value, element) {
+    return this.optional(element) || !/[^0-9\-\/]/.test(value);
+}, );
+
+$.validator.addMethod("NotAcceptedSpecialCharaters", function (value, element) {
+    return this.optional(element) || /^\w+$/i.test(value);
+}, );
+
+$("#addingbookformid").validate({
+    rules: {
+        booktitle: {
+            required: true,
+            minlength: 5,
+            maxlength: 25,
+            NotAcceptedSpecialCharaters: true
+        },
+        booksummary: {
+            required: true,
+            minlength: 10,
+            maxlength: 200,
+        },
+        bookcategory: {
+            required: true,
+        },
+        bookauthor: {
+            required: true,
+        },
+        bookpublishername: {
+            required: true,
+        },
+        bookprice: {
+            required: true,
+            range: [1.00, 99999.00],
+            maxlength: 8
+        },
+        bookquantity: {
+            required: true,
+            range: [1, 999999],
+            AllNumberInteger: true,
+            maxlength: 6
+        },
+        bookimageurl: {
+            required: true,
+            extension: "jpg|png"
+        }
+    },
+
+    messages: {
+        booktitle: {
+            required: "Please provide a book title",
+            minlength: "Book title must be at least 5 characters long",
+            maxlength: "Book title must be maximum 25 characters long",
+            NotAcceptedSpecialCharaters: "Please enter valid title. No special character allowed. "
+        },
+        booksummary: {
+            required: "Please provide a book summary",
+            minlength: "Book summary must be at least 10 characters long",
+            maxlength: "Book summary must be maximum 200 characters long"
+        },
+        bookcategory: {
+            required: "Please provide a book category",
+        },
+        bookauthor: {
+            required: "Please provide a book author",
+        },
+        bookpublishername: {
+            required: "Please provide a book publisher name",
+        },
+        bookprice: {
+            required: "Please provide a book price",
+            range: "Please enter a book price between 1.00 and 99999.00",
+            maxlength: "Book price must be maximum 8 characters long"
+        },
+        bookquantity: {
+            required: "Please provide a book quantity",
+            range: "Please enter a book quantity between 1 and 999999",
+            maxlength: "Book quantity must be maximum 6 characters long",
+            AllNumberInteger: "Please enter a valid number (integer)."
+        },
+        bookimageurl: {
+            required: "Please provide a book image url",
+            extension: "Please choose a valid image (png, jpg)."
+        }
+    },
+
+    submitHandler: function (form) {
+        alert("All Ok");
+        form.submit();
+    }
+});
+
+  //Add Book Form Validation-End
 /*----------------------DAT - LAYOUT - END  -----------------------*/
 
 /*----------------------DIENG - ... - BEGIN-----------------------*/
+//Login Form Validation-Begin
 
+$("#loginformid").validate({
+    rules: {
+        email: {
+            required: true,
+            minlength: 9,
+            maxlength: 20,
+            email: true
+        },
+        password: {
+            required: true,
+            minlength: 8,
+            maxlength: 20,
+        },
+       
+    },
+
+    messages: {
+        email: {
+            required: "Please provide a email as username",
+            minlength: "Username must be at least 9 characters long",
+            maxlength: "Username must be maximum 20 characters long",
+            email: "Please enter valid email as a username! "
+        },
+        password: {
+            required: "Please provide a password",
+            minlength: "Password must be at least 8 characters long",
+            maxlength: "Password must be maximum 20 characters long"
+        }
+    },
+
+    submitHandler: function (form) {
+        alert("All Ok");
+        form.submit();
+    }
+});
+
+  //Login Form Validation-End
 /*----------------------DIENG - ... - END  -----------------------*/

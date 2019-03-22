@@ -576,7 +576,12 @@ table.dataTable thead .sorting_desc_disabled {
         }
 }
 /*sb-admin-2.css End*/
-
+/*Dat Customize begin*/
+.dat-lable-input {
+    text-align: right;
+    margin-top: 5px
+}
+/*Dat Customize End*/
 
 /*----------------------DAT - LAYOUT - END  -----------------------*/
 
