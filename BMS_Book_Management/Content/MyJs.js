@@ -144,6 +144,62 @@ $("#addingbookformid").validate({
 });
 
   //Add Book Form Validation-End
+  //Register Form Validation-Begin
+ $("#registerformid").validate({
+        rules: {
+            username: {
+                required: true,
+                minlength: 9,
+                maxlength: 50,
+                NotAcceptedSpecialCharaters: true
+            },
+            email: {
+                required: true,
+                minlength: 9,
+                maxlength: 50,
+                email: true
+        },
+            password: {
+                required: true,
+                minlength: 8,
+                maxlength: 20,
+            },
+            repassword: {
+                required: true,               
+                equalTo: '[name="password"]'
+            }
+
+        },
+       
+        messages: {
+            username: {
+                required: "Please provide a username",
+                minlength: "Username must be at least 9 characters long",
+                maxlength: "Username must be maximum 50 characters long",
+                NotAcceptedSpecialCharaters: "Please enter valid Username. No special character allowed. "
+            },
+            email: {
+                required: "Please provide a email as username",
+                minlength: "Username must be at least 9 characters long",
+                maxlength: "Username must be maximum 50 characters long",
+                email: "Please enter valid email as a username! "
+        },
+            password: {
+                required: "Please provide a password",
+                minlength: "Password must be at least 8 characters long",
+                maxlength: "Password must be maximum 20 characters long"
+            }, repassword: {
+                required: "Please provide a Re-password",
+                equalTo: "Password and Re-Password doesn't match!"
+            }
+        },
+
+        submitHandler: function (form) {
+        alert("All Ok");
+        form.submit();
+    }
+});
+  //Register Form Validation-End
 /*----------------------DAT - LAYOUT - END  -----------------------*/
 
 /*----------------------DIENG - ... - BEGIN-----------------------*/
@@ -154,7 +210,7 @@ $("#loginformid").validate({
         email: {
             required: true,
             minlength: 9,
-            maxlength: 20,
+            maxlength: 50,
             email: true
         },
         password: {
@@ -169,7 +225,7 @@ $("#loginformid").validate({
         email: {
             required: "Please provide a email as username",
             minlength: "Username must be at least 9 characters long",
-            maxlength: "Username must be maximum 20 characters long",
+            maxlength: "Username must be maximum 50 characters long",
             email: "Please enter valid email as a username! "
         },
         password: {
