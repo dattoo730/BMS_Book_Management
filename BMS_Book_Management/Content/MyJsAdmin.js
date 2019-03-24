@@ -49,7 +49,24 @@ $(function () {
     }
 });
   //sb - admin - 2 END
+//Customize - begin
+function ShowImageFromFile(input, id) {
 
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            // alert("fff");
+            $(id)
+                .attr('src', e.target.result)
+                .width(200)
+                .height(200);
+        };
+        reader.readAsDataURL(input.files[0]);
+
+        //$("#anhdaidientxtfor").val()=dt;
+    }
+}
+//Customize - End
   //Add Book Form Validation-Begin
 
 $.validator.addMethod("AllNumberInteger", function (value, element) {
@@ -200,9 +217,6 @@ $("#addingbookformid").validate({
     }
 });
   //Register Form Validation-End
-/*----------------------DAT - LAYOUT - END  -----------------------*/
-
-/*----------------------DIENG - ... - BEGIN-----------------------*/
 //Login Form Validation-Begin
 
 $("#loginformid").validate({
@@ -218,7 +232,7 @@ $("#loginformid").validate({
             minlength: 8,
             maxlength: 20,
         },
-       
+
     },
 
     messages: {
@@ -241,5 +255,72 @@ $("#loginformid").validate({
     }
 });
 
-  //Login Form Validation-End
+//Login Form Validation-End
+
+//Update Avata Form Validation-Begin
+
+$("#changeavataformid").validate({
+    rules: {
+        avatar: {
+            required: true,
+            extension: "jpg|png"
+        }
+    },
+
+    messages: {
+        avatar: {
+            required: "Please choose a image for your avatar",
+            extension: "Please choose a valid image (png, jpg)."
+        }
+    },
+    submitHandler: function (form) {
+        alert("All Ok");
+         form.submit();
+    }
+});
+
+//Update Avata Form Validation-End
+//Change password Form Validation-Begin
+
+$("#changepasswordformid").validate({
+    rules: {
+        oldpassword: {
+            required: true            
+        },
+        newpassword: {
+            required: true,
+            minlength: 8,
+            maxlength: 20,
+        },
+        renewpassword: {
+            required: true,
+            equalTo: '[name="newpassword"]'
+        }
+    },
+
+    messages: {
+        oldpassword: {
+            required: "Please provide a current password"
+        },
+        newpassword: {
+            required: "Please provide a new password",
+            minlength: "New Password must be at least 8 characters long",
+            maxlength: "New Password must be maximum 20 characters long"
+        },
+        renewpassword: {
+            required: "Please provide a Re-password",
+            equalTo: "Password and Re-Password doesn't match!"
+        }
+    },
+    submitHandler: function (form) {
+        alert("All Ok");
+        //  form.submit();
+    }
+});
+
+  //Change password Form Validation-End
+/*----------------------DAT - LAYOUT - END  -----------------------*/
+
+/*----------------------DIENG - ... - BEGIN-----------------------*/
+
 /*----------------------DIENG - ... - END  -----------------------*/

@@ -1,6 +1,107 @@
 ﻿@{
 
-    ViewBag.Title = "Manage Accounts";
+    ViewBag.Title = "Manage Account Users ";
 }
 
-<h1>Manage Accounts</h1>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-header"><h2>Manage Account Users</h2></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <a>Create New</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 datatable-padding">
+        <table width="100%" class="table table-responsive table-hover manage-datatable" id="dataTables-ManageBook">
+            <thead>
+                <tr>
+                    <th class="manage-th1">Avatar</th>
+                    <th class="manage-th3 ">Full Name</th>
+                    <th class="manage-th1">Address</th>
+                    <th class="manage-th2">Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="gradeA">
+                    <td>                       
+                        <img width="95" height="150" src="~/Content/Images/image-best03.jpg" />
+                    </td>
+                    <td>Chềnh Nhục Diễng</td>
+                    <td>Dieng's House</td>
+                    <td><span class="text-success">Active</span></td>
+                    <td>
+                        <p><a href="javascript:LoadEditAccountForm();" class="small">Edit</a> | <a href="#" class="small">Details</a> | <a href="#" class="small">Delete</a></p>
+                    </td>
+                </tr>
+                <tr class="gradeA">
+                    <td>
+                        <img width="95" height="150" src="~/Content/Images/image01.jpg" />
+                    </td>
+                    <td>Nguyễn Đình Dương</td>
+                    <td>Duong's House</td>
+                    <td><span class="text-danger">Blocked</span></td>
+                    <td>
+                        <p><a href="javascript:LoadEditAccountForm();" class="small">Edit</a> | <a href="#" class="small">Details</a> | <a href="#" class="small">Delete</a></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="modal fade" id="manageaccountmodalid" role="dialog">
+        <div class="modal-dialog">
+
+            <div style="width:1000px" class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4><span class="glyphicon glyphicon-refresh"></span> <span id="manageaccountmodalheaderid"> </span> </h4>
+                </div>
+
+                <div class="modal-body" style="padding:40px 50px;width:1000px">
+                    <div class="text-danger" id="nhanreturnjsondoipass"></div>
+                    <div id="manageaccountmodalcontentid" class="form-horizontal">
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function LoadEditAccountForm() {
+        var url = '@Url.Action("UpdateAccount","Account")';
+        $.ajax({
+            url: url,
+            type: 'Get',
+            cache: false,
+            success: function (result) {
+                $('#manageaccountmodalcontentid').html(result);
+                $('#manageaccountmodalheaderid').html('Update Account');
+                $("#manageaccountmodalid").modal();
+            },
+            error: function (e) {
+                alert("Something Wrong!");
+            }
+        });
+    }
+
+
+</script>

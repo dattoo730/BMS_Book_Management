@@ -225,6 +225,7 @@
     <Content Include="Content\Images\image08.jpg" />
     <Content Include="Content\Images\list-image.png" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\noavatar.jpg" />
     <Content Include="Content\LoginStyle.css" />
     <Content Include="Content\MyJsHome.js" />
     <Content Include="Content\MyJsAdmin.js" />
@@ -299,6 +300,7 @@
     <Content Include="Areas\Admin\Views\Account\AddAccount.cshtml" />
     <Content Include="Areas\Admin\Views\Account\UpdateAccount.cshtml" />
     <Content Include="Areas\Admin\Views\Account\DetailsAccount.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="bin\BMS_Book_Management.dll.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
