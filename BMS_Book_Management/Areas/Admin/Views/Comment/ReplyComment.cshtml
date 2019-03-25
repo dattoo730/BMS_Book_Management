@@ -1,0 +1,157 @@
+﻿
+@{ 
+    Layout = null;
+}
+
+<script>
+    $("#replycommentformid").validate({
+        rules: {
+            replycontent: {
+                required: true,
+                minlength: 5,
+                maxlength: 100
+            }
+        },
+
+        messages: {
+            replycontent: {
+                required: "Please provide a reply content",
+                minlength: "Reply content must be at least 5 characters long",
+                maxlength: "Reply content must be maximum 100 characters long"
+                
+            }
+        },
+
+        submitHandler: function (form) {
+            alert("All Ok");
+            form.submit();
+        }
+    });
+</script>
+<div class="form-horizontal">
+    <div class="alert alert-info" style="display:none">
+        <span id="kiemtratrung"></span>
+    </div>
+
+    <div class="comment-item">
+        <div class="row no-margin">
+            <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
+                <div class="avatar">
+                    <img alt="avatar" src="~/Content/Images/image08.jpg" width="70" height="70">
+                </div><!-- /.avatar -->
+            </div><!-- /.col -->
+
+            <div class="col-xs-11 col-lg-10 col-sm-9" style="background-color:#efefef;margin-left:15px;height:69px">
+                <div class="comment-body">
+                    <div class="meta-info">
+                        <div class="author inline">
+                            <a href="#" class="bold">Heo <span class="text-info"><strong>(User)</strong></span></a>
+                        </div>
+                        <div class="star-holder inline">
+                            @*<div class="star" data-score="4"></div>*@
+                        </div>
+                        <div class="date inline pull-right">
+                            <span>25/12/2017</span> 
+                            
+                        </div>
+                    </div><!-- /.meta-info -->
+                    <p class="comment-text">
+                        Chi Ly
+                    </p><!-- /.comment-text -->
+                </div><!-- /.comment-body -->
+            </div><!-- /.col -->
+
+
+        </div><!-- /.row -->
+    </div><!-- /.comment-item -->
+
+    <div style="padding-left: 100px">
+
+
+        <div style="padding-top:10px" class="comment-item">
+            <div class="row no-margin">
+                <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
+                    <div class="avatar">
+                        <img alt="avatar" src="~/Content/Images/image05.jpg" width="70" height="70">
+                    </div><!-- /.avatar -->
+                </div><!-- /.col -->
+
+                <div class="col-xs-11 col-lg-10 col-sm-8" style="background-color:#efefef;margin-left:28px;height:69px">
+                    <div class="comment-body">
+                        <div class="meta-info">
+                            <div class="author inline">
+                                <a href="#" class="bold">John  <span class="text-info"><strong>(User)</strong></span></a>
+                            </div>
+                            <div class="star-holder inline">
+                                @*<div class="star" data-score="4"></div>*@
+                            </div>
+                            <div class="date inline pull-right">
+                                <span> 25/12/2017</span>
+                               
+                            </div>
+                        </div><!-- /.meta-info -->
+                        <p class="comment-text">
+                            Great!
+                        </p><!-- /.comment-text -->
+                    </div><!-- /.comment-body -->
+                </div><!-- /.col -->
+
+
+            </div><!-- /.row -->
+        </div><!-- /.comment-item -->
+
+        <div style="padding-top:10px" class="comment-item">
+            <div class="row no-margin">
+                <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
+                    <div class="avatar">
+                        <img alt="avatar" src="~/Content/Images/image07.jpg" width="70" height="70">
+                    </div><!-- /.avatar -->
+                </div><!-- /.col -->
+
+                <div class="col-xs-11 col-lg-10 col-sm-8" style="background-color:#efefef;margin-left:28px;height:69px">
+                    <div class="comment-body">
+                        <div class="meta-info">
+                            <div class="author inline">
+                                <a href="#" class="bold">Admin <span class="text-success"><strong>(Admintrator)</strong></span></a>
+                            </div>
+                            <div class="star-holder inline">
+                                @*<div class="star" data-score="4"></div>*@
+                            </div>
+                            <div class="date inline pull-right">
+                                <span> 25/12/2017</span>
+                                
+                            </div>
+                        </div><!-- /.meta-info -->
+                        <p class="comment-text">
+                            Hello
+                        </p><!-- /.comment-text -->
+                    </div><!-- /.comment-body -->
+                </div><!-- /.col -->
+
+
+            </div><!-- /.row -->
+        </div><!-- /.comment-item -->
+
+    </div>
+
+
+
+    <hr />
+    <form id="replycommentformid">
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label ">Reply Content</label>
+            <div class="col-sm-10">
+                <textarea name="replycontent" class="form-control" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label "></label>
+            <div class="col-sm-10">
+                <input type="submit" class="btn btn-info" value="Reply" />
+            </div>
+        </div>
+       
+
+    </form>
+
+</div>

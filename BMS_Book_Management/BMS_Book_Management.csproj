@@ -302,6 +302,11 @@
     <Content Include="Areas\Admin\Views\Account\DetailsAccount.cshtml" />
     <Content Include="Areas\Admin\Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="bin\BMS_Book_Management.dll.config" />
+    <Content Include="Areas\Admin\Views\Account\_ResetPasswordPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Book\_AddBookPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\DeleteConfirm.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\_AddAccountPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Comment\ReplyComment.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

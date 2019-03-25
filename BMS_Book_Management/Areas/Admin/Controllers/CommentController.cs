@@ -13,6 +13,10 @@ namespace BMS_Book_Management.Areas.Admin.Controllers
         {
             return View();
         }
+        public ActionResult ReplyComment()
+        {
+            return View();
+        }
         public ActionResult UpdateComment()
         {
             return View();

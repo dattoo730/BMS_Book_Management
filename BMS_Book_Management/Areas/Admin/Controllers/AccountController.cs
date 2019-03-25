@@ -13,17 +13,29 @@ namespace BMS_Book_Management.Areas.Admin.Controllers
         {
             return View();
         }
-        public ActionResult UpdateAccount()
-        {
-            ViewBag.ModalHeaderName = "Update Account";
-            return View();
-        }
-        public ActionResult DeleteAccount()
+        public ActionResult _AddAccountPartial()
         {
             return View();
         }
-        public ActionResult DetailsAccount()
+        
+
+        [HttpGet]
+        public ActionResult UpdateAccount(string id)
         {
+            ViewBag.AccountID = id;
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult DeleteAccount(string id)
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult DetailsAccount(string id)
+        {
+            ViewBag.AccountID = id;
             return View();
         }
 
@@ -31,6 +43,20 @@ namespace BMS_Book_Management.Areas.Admin.Controllers
         public ActionResult _ChangePasswordPartial()
         {
 
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult _ResetPasswordPartial(string id)
+        {
+            ViewBag.AccountID = id;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteConfirm(string id)
+        {
+            ViewBag.AccountID = id;
             return View();
         }
     }

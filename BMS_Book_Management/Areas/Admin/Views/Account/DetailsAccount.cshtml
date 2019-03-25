@@ -1,6 +1,56 @@
 ﻿@{
-
+    Layout = null;
     ViewBag.Title = "Details Account";
 }
 
-<h1>Details of Account</h1>
+
+
+<div class="row">
+    <div class="col-lg-12 datatable-padding">
+        <table width="100" class="table table-responsive table-hover manage-datatable" id="dataTables-ManageBook">
+            <thead>
+                <tr>
+                    <th class="manage-th1">Avatar</th>
+                    <th class="manage-th1">Username</th>
+                    <th class="manage-th3 ">Full Name</th>
+                    <th class="manage-th1">Email</th>
+                    <th class="manage-th1">Phone</th>
+                    <th class="manage-th1">Address</th>
+                    <th class="manage-th1">Birthday</th>
+                    <th class="manage-th1">Gender</th>
+                    <th class="manage-th1">Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="gradeA">
+                    <td>
+                        <img width="95" height="150" src="~/Content/Images/image-best03.jpg" />
+                    </td>
+                    <td>@ViewBag.AccountID</td>
+                    <td>Chềnh Nhục Diễng</td>
+                    <td>dieng01@gmail.com</td>
+                    <td>0123456789</td>
+                    <td>Dieng's House</td>
+                    <td>01/01/1997</td>
+                    <td>Male</td>
+                    <td><span class="text-success">Active</span></td>                   
+                </tr>
+                @*<tr class="gradeA">
+                    <td>
+                        <img width="95" height="150" src="~/Content/Images/image01.jpg" />
+                    </td>
+                    <td>user02</td>
+                    <td>Nguyễn Đình Dương</td>
+                    <td>duong01@gmail.com</td>
+                    <td>0987654321</td>
+                    <td>Duong's House</td>
+                    <td>05/01/1997</td>
+                    <td>Female</td>
+                    <td><span class="text-danger">Blocked</span></td>
+                </tr>*@
+            </tbody>
+        </table>
+
+    </div>
+</div>

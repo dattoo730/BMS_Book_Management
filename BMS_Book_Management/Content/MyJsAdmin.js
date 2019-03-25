@@ -50,6 +50,45 @@ $(function () {
 });
   //sb - admin - 2 END
 //Customize - begin
+//check all list
+function toggle(source) {
+    checkboxes = document.getElementsByName('lstdel');
+    for (var i = 0, n = checkboxes.length; i < n; i++) {
+        checkboxes[i].checked = source.checked;
+    }
+}
+//multibledel ajax
+function multibledelaccount() {
+    checkboxes = document.getElementsByName('lstdel');
+    var lst = new Array();
+    for (var i = 0, n = checkboxes.length; i < n; i++) {
+        if (checkboxes[i].checked) {
+            lst.push(checkboxes[i].value);
+        }
+    }
+    if (lst.length > 0) {
+        if (confirm("Are you sure?") == true) {
+            alert("Done!");
+        }
+    }
+    else alert("Notthing was selected for deleting.");
+}
+//multibledel ajax
+function MultibleHiddenComment() {
+    checkboxes = document.getElementsByName('lstdel');
+    var lst = new Array();
+    for (var i = 0, n = checkboxes.length; i < n; i++) {
+        if (checkboxes[i].checked) {
+            lst.push(checkboxes[i].value);
+        }
+    }
+    if (lst.length > 0) {
+        if (confirm("Are you sure?") == true) {
+            alert("Done!");
+        }
+    }
+    else alert("Notthing was selected");
+}
 function ShowImageFromFile(input, id) {
 
     if (input.files && input.files[0]) {
