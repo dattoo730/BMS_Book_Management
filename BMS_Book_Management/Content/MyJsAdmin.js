@@ -361,5 +361,271 @@ $("#changepasswordformid").validate({
 /*----------------------DAT - LAYOUT - END  -----------------------*/
 
 /*----------------------DIENG - ... - BEGIN-----------------------*/
+//Change Category Form Validation
+$("#updateCategory").validate({
+    rules: {
+        Categoryname: {
+            required: true,
+            minlength: 8,
+            maxlength: 30,
+        },
+        DescripCategory: {
+            required: true,
+            minlength: 20,
+        }
+    },
+    messages: {
+        Categoryname: {
+            required: "Please provide a category name",
+            minlength: "Category name must be at least 8 characters long",
+            maxlength: "Category name must be maximum 30 characters long"
+        },
+        DescripCategory: {
+            required: "Please provide description",
+            minlength: "Description must be at least 8 characters long",
+        }
+    },
+    submitHandler: function (form) {
+        if (confirm("Are you sure?") == true) {
+            alert("updated");
+        }
+    }
+});
+//Add Category Form Validation
+$("#AddCategory").validate({
+    rules: {
+        Categoryname: {
+            required: true,
+            minlength: 8,
+            maxlength: 30,
+        },
+        DescripCategory: {
+            required: true,
+            minlength: 20,
+        }
+    },
+    messages: {
+        Categoryname: {
+            required: "Please provide a category name",
+            minlength: "Category name must be at least 8 characters long",
+            maxlength: "Category name must be maximum 30 characters long"
+        },
+        DescripCategory: {
+            required: "Please provide description",
+            minlength: "Description must be at least 8 characters long",
+        }
+    },
+    submitHandler: function (form) {
+        alert("ok");
+        //  form.submit();
+    }
+});
+//Change Book Form Validation
+$("#updatingbookformid").validate({
+    rules: {
+        booktitle: {
+            required: true,
+            minlength: 5,
+            maxlength: 25,
+            NotAcceptedSpecialCharaters: true
+        },
+        booksummary: {
+            required: true,
+            minlength: 10,
+            maxlength: 200,
+        },
+        bookcategory: {
+            required: true,
+        },
+        bookauthor: {
+            required: true,
+        },
+        bookpublishername: {
+            required: true,
+        },
+        bookprice: {
+            required: true,
+            range: [1.00, 99999.00],
+            maxlength: 8
+        },
+        bookquantity: {
+            required: true,
+            range: [1, 999999],
+            AllNumberInteger: true,
+            maxlength: 6
+        },
+        bookimageurl: {
+            required: true,
+            extension: "jpg|png"
+        }
+    },
+
+    messages: {
+        booktitle: {
+            required: "Please provide a book title",
+            minlength: "Book title must be at least 5 characters long",
+            maxlength: "Book title must be maximum 25 characters long",
+            NotAcceptedSpecialCharaters: "Please enter valid title. No special character allowed. "
+        },
+        booksummary: {
+            required: "Please provide a book summary",
+            minlength: "Book summary must be at least 10 characters long",
+            maxlength: "Book summary must be maximum 200 characters long"
+        },
+        bookcategory: {
+            required: "Please provide a book category",
+        },
+        bookauthor: {
+            required: "Please provide a book author",
+        },
+        bookpublishername: {
+            required: "Please provide a book publisher name",
+        },
+        bookprice: {
+            required: "Please provide a book price",
+            range: "Please enter a book price between 1.00 and 99999.00",
+            maxlength: "Book price must be maximum 8 characters long"
+        },
+        bookquantity: {
+            required: "Please provide a book quantity",
+            range: "Please enter a book quantity between 1 and 999999",
+            maxlength: "Book quantity must be maximum 6 characters long",
+            AllNumberInteger: "Please enter a valid number (integer)."
+        },
+        bookimageurl: {
+            required: "Please provide a book image url",
+            extension: "Please choose a valid image (png, jpg)."
+        }
+    },
+
+    submitHandler: function (form) {
+        if (confirm("Are you sure?") == true) {
+            alert("updated");
+        }
+    }
+});
+//imagePreview
+function ShowImagePreview(imageUploader, previewImage) {
+    if (imageUploader.files && imageUploader.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(previewImage).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(imageUploader.files[0]);
+    }
+}
+//delete book
+function deleteBook(id) {
+    if (confirm("Are you sure?") == true) {
+        alert("Deleted.");
+    }
+};
+//go to edit the book
+function EditBooks(id) {
+    $.ajax({
+        url: "/Admin/Book/UpdateBook",
+        type: 'Get',
+        data: { id: id },
+
+        success: function (result) {
+            $('#managebookcontrol').html(result);
+
+        },
+        error: function (xhr) {
+            console.log(xhr.responseText);
+            alert("Error has occurred..");
+        }
+    });
+}
+
+//go to details the book
+function DetailsBook() {
+    $.ajax({
+        url: "/Admin/Book/DetailsBook",
+        type: 'Get',
+        //data: { id: id },
+
+        success: function (result) {
+            $('#managebookcontrol').html(result);
+
+        },
+        error: function (xhr) {
+            console.log(xhr.responseText);
+            alert("Error has occurred..");
+        }
+    });
+}
+//Get back a last page
+function GetBack() {
+    location.reload(true);
+}
+//go to add book page
+function AddBook() {
+    $.ajax({
+        url: "/Admin/Book/AddBook",
+        type: 'Get',
+        //data: { id: id },
+
+        success: function (result) {
+            $('#managebookcontrol').html(result);
+
+        },
+        error: function (xhr) {
+            console.log(xhr.responseText);
+            alert("Error has occurred..");
+        }
+    });
+}
+//go to add category page
+function AddCategory() {
+    $.ajax({
+        url: "/Admin/Category/AddCategory",
+        type: 'Get',
+        //data: { id: id },
+
+        success: function (result) {
+            $('#manageCategorycontrol').html(result);
+
+        },
+        error: function (xhr) {
+            console.log(xhr.responseText);
+            alert("Error has occurred..");
+        }
+    });
+}
+//go to update category page
+function UpdateCategory(id) {
+    $.ajax({
+        url: "/Admin/Category/UpdateCategory",
+        type: 'Get',
+        data: { id: id },
+
+        success: function (result) {
+            $('#manageCategorycontrol').html(result);
+
+        },
+        error: function (xhr) {
+            console.log(xhr.responseText);
+            alert("Error has occurred..");
+        }
+    });
+}
+//go to details category page
+function DetailsCategory() {
+    $.ajax({
+        url: "/Admin/Category/DetailsCategory",
+        type: 'Get',
+        //data: { id: id },
+
+        success: function (result) {
+            $('#manageCategorycontrol').html(result);
+
+        },
+        error: function (xhr) {
+            console.log(xhr.responseText);
+            alert("Error has occurred..");
+        }
+    });
+}
 
 /*----------------------DIENG - ... - END  -----------------------*/

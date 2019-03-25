@@ -1,11 +1,13 @@
 ﻿@{
 
     ViewBag.Title = "Update Category";
+    Layout = null;
 }
+
 <div class="row">
     <div class="col-lg-12">
         <div class="page-header arrow-left">
-            <a class="fa fa-arrow-left"></a>
+            <a class="fa fa-arrow-left" onclick="GetBack()"></a>
             <h3> Update Book</h3>
         </div>
     </div>
@@ -18,41 +20,38 @@
             </div>
             <div class="panel-body">
                 <div class="panel-body-create">
-                    <from method="post" role="form">
-                        <fieldset>
-                            <div class="form-group row">
-                                <label class="col-md-3 text-right">Category name</label>
-                                <div class="col-md-9">
-                                    <input class="form-control" placeholder="CateName">
-                                </div>
+                    <form method="post" role="form" id="updateCategory">
+                        <div class="form-group row">
+                            <label class="col-md-3 text-right">Category name</label>
+                            <div class="col-md-9">
+                                <input class="form-control" placeholder="CategoryName" name="Categoryname" id="Categoryname">
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 text-right">Description</label>
-                                <div class="col-md-9">
-                                    <textarea name="" id="" class="form-control" rows="3"></textarea>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 text-right">Description</label>
+                            <div class="col-md-9">
+                                <textarea name="DescripCategory" id="DescripCategory" class="form-control" rows="3"></textarea>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 text-right">IsActive</label>
-                                <div class="col-md-9">
-                                    <select name="" id="" class="form-control">
-                                        <option value="1">True</option>
-                                        <option value="2">False</option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 text-right">IsActive</label>
+                            <div class="col-md-9">
+                                <select name="" id="" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="2">False</option>
+                                </select>
                             </div>
-                            <div class="form-group row">
-                                <div class="col-md-6 col-md-offset-3">
-                                    <button type="button" class="btn btn btn-success bnt-magin">Update</button>
-                                    <button type="button" class="btn btn-default">Cancel</button>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-6 col-md-offset-3">
+                                <button type="submit" class="btn btn-success bnt-magin">Update</button>
+                                <button type="button" class="btn btn-default">Cancel</button>
                             </div>
-                        </fieldset>
-                    </from>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
+@Scripts.Render("~/Content/MyJsAdmin.js");

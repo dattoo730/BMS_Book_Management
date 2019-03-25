@@ -9,11 +9,13 @@ namespace BMS_Book_Management.Areas.Admin.Controllers
     public class CategoryController : Controller
     {
         // GET: Admin/Category
+        [HttpGet]
         public ActionResult AddCategory()
         {
             return View();
         }
-        public ActionResult UpdateCategory()
+        [HttpGet]
+        public ActionResult UpdateCategory(String id)
         {
             return View();
         }
@@ -21,6 +23,7 @@ namespace BMS_Book_Management.Areas.Admin.Controllers
         {
             return View();
         }
+        [HttpGet]
         public ActionResult DetailsCategory()
         {
             return View();
