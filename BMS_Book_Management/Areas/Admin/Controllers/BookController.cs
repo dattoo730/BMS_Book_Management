@@ -9,13 +9,14 @@ namespace BMS_Book_Management.Areas.Admin.Controllers
     public class BookController : Controller
     {
         // GET: Admin/Book
+        [HttpGet]
         public ActionResult AddBook()
         {
             return View();
         }
-       
 
-        public ActionResult UpdateBook()
+        [HttpGet]
+        public ActionResult UpdateBook(String id)
         {
             return View();
         }
@@ -24,6 +25,7 @@ namespace BMS_Book_Management.Areas.Admin.Controllers
         {
             return View();
         }
+        [HttpGet]
         public ActionResult DetailsBook()
         {
             return View();

@@ -1,14 +1,19 @@
 ﻿@{
     ViewBag.Title = "Adding Book";
+    Layout = null;
 }
 @*<script src="~/Content/jquery.validate.min.js"></script>*@
 
-
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-header arrow-left">
+            <a class="fa fa-arrow-left" onclick="GetBack()"></a>
+            <h3> Add Book</h3>
+        </div>
+    </div>
+</div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Thêm mới sách</h1>
-        </div>
         <div class="col-lg-12">
             <form method="post" role="form" id="addingbookformid">
 
@@ -98,10 +103,4 @@
 </div>
 
 
-
-
-<script>
-
-</script>
-
-
+@Scripts.Render("~/Content/MyJsAdmin.js");

@@ -2,7 +2,7 @@
     ViewBag.Title = "Manage Categories";
 }
 
-<div class="container-fluid">
+<div class="container-fluid"  id="manageCategorycontrol">
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Quản Lý Danh Mục Sách</h1>
@@ -10,8 +10,8 @@
         <div class="col-lg-12">
             <div class="panel-body">
                 <div class="table">
-                    <div>
-                        <a href="#">Create New</a>
+                    <div class=" gradeA">
+                        <a onclick="AddCategory();" >Create New</a>
                     </div>
                     <hr style="margin-top:15px;margin-bottom:5px" />
                     <table class="table table-hover">
@@ -32,12 +32,12 @@
                                 </td>
                                 <td>
                                     <table>
-                                        <tr>
-                                            <td><a href="#">Edit</a></td>
+                                        <tr class="gradeA">
+                                            <td><a onclick="UpdateCategory('111');">Edit</a></td>
                                             <td width="15px" align="center">|</td>
-                                            <td><a href="#">Details</a></td>
+                                            <td><a onclick="DetailsCategory();">Details</a></td>
                                             <td width="15px" align="center">|</td>
-                                            <td><a href="#">Delete</a></td>
+                                            <td><a  href="#" onclick="deleteBook('');">Delete</a></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -50,12 +50,12 @@
                                 </td>
                                 <td>
                                     <table>
-                                        <tr>
-                                            <td><a href="#">Edit</a></td>
+                                        <tr class="gradeA">
+                                            <td><a  onclick="UpdateCategory('111');">Edit</a></td>
                                             <td width="15px" align="center">|</td>
-                                            <td><a href="#">Details</a></td>
+                                            <td><a onclick="DetailsCategory();">Details</a></td>
                                             <td width="15px" align="center">|</td>
-                                            <td><a href="#">Delete</a></td>
+                                            <td><a   href="#" onclick="deleteBook('');">Delete</a></td>
                                         </tr>
                                     </table>
                                 </td>

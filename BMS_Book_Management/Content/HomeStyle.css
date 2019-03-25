@@ -153,3 +153,51 @@
     line-height: 24px;
     color: #0182b5;
 }
+.titleBook-font {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 28px;
+}
+.author-font {
+    font-size: 13px;
+    line-height: 18px;
+    color: #3d3d3d;
+    font-family: 'Georgia', Arial, serif;
+    padding: 0 0 9px 1px;
+    display: block;
+}
+.checked-star {
+    color: orange;
+}
+.reviewstar span {
+    font-size:16px;
+}
+.reviewstar span:last-child {
+    padding-left:10px;
+    font-size: 14px;
+}
+.price-font{
+    color:red;
+    font-size: 20px;
+    margin-top: 15px;
+}
+.quantity-font {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.buybnt-font{
+    margin:15px 10px 10px 0px;
+    width:120px;
+    height:40px;
+}
+.layout-padding{
+    padding-top:1px;
+}
+.descriptionB {
+    padding-bottom: 100px;
+}
+.descriptionB span {
+   font-size: 14px;
+    line-height: 1.6em;
+    color: #878787;
+    height: 50px;
+}

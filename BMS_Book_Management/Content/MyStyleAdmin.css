@@ -551,8 +551,18 @@ table.dataTable thead .sorting_desc_disabled {
     width: 100%;
     height: 350px;
 }
+.imgUp-size {
+    width: 90%;
+    height: 320px;
+}
 .span-font {
     font-family: 'Georgia', Arial, serif;
+}
+.img-padding {
+    padding-left: 35px;
+}
+.form-padding {
+    padding-right:20px;
 }
 
 /*Home css*/
