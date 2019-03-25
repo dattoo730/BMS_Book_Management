@@ -5,40 +5,56 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="page-header"><h2>Manage Account Users</h2></div>
+        <div class="page-header"><h2>Manage User Account </h2></div>
     </div>
 </div>
 
 <div class="row">
     <div class="col-lg-12">
-        <a>Create New</a>
+        <a href="javascript:LoadCreateAccountForm();">Create New</a>
     </div>
 </div>
+<div style="margin-top:8px" class="input-group">
+    <a class="btn btn-danger" href='javascript:multibledelaccount()'>
+        <i class="glyphicon glyphicon-trash icon-white"></i>
+        Delete All Selected Account
+    </a>
+</div>
+
 <div class="row">
     <div class="col-lg-12 datatable-padding">
-        <table width="100%" class="table table-responsive table-hover manage-datatable" id="dataTables-ManageBook">
+        <table width="100%" class="table table-responsive table-hover manage-datatable" id="dataTables-Manageaccount">
             <thead>
                 <tr>
+                    <th>
+                        <input type="checkbox" onclick="toggle(this)" />
+                    </th>
                     <th class="manage-th1">Avatar</th>
-                    <th class="manage-th3 ">Full Name</th>
-                    <th class="manage-th1">Address</th>
-                    <th class="manage-th2">Status</th>
+                    <th class="manage-th2 ">Full Name</th>
+                    <th class="manage-th2">Address</th>
+                    <th class="manage-th1">Status</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="gradeA">
-                    <td>                       
+                    <td >
+                        <input type="checkbox" name="lstdel" value="'id0000001'" />
+                    </td>
+                    <td>
                         <img width="95" height="150" src="~/Content/Images/image-best03.jpg" />
                     </td>
                     <td>Chềnh Nhục Diễng</td>
                     <td>Dieng's House</td>
                     <td><span class="text-success">Active</span></td>
                     <td>
-                        <p><a href="javascript:LoadEditAccountForm();" class="small">Edit</a> | <a href="#" class="small">Details</a> | <a href="#" class="small">Delete</a></p>
+                        <p><a href="javascript:LoadEditAccountForm('id0000001');" class="small">Edit</a> | <a href="javascript:LoadDetailAccountForm('id0000001');" class="small">Details</a> | <a id="" href="javascript:LoadDeleteConfirmForm('id0000001');" class="small">Delete</a> |  <a class="small" href="javascript:LoadResetPasswordForm('id0000001');">Reset Password</a></p>
                     </td>
                 </tr>
                 <tr class="gradeA">
+                    <td >
+                        <input type="checkbox" name="lstdel" value="'id0000001'" />
+                    </td>
                     <td>
                         <img width="95" height="150" src="~/Content/Images/image01.jpg" />
                     </td>
@@ -46,11 +62,12 @@
                     <td>Duong's House</td>
                     <td><span class="text-danger">Blocked</span></td>
                     <td>
-                        <p><a href="javascript:LoadEditAccountForm();" class="small">Edit</a> | <a href="#" class="small">Details</a> | <a href="#" class="small">Delete</a></p>
+                        <p><a href="javascript:LoadEditAccountForm('id0000002');" class="small">Edit</a> | <a href="javascript:LoadDetailAccountForm('id0000002');" class="small">Details</a> | <a href="javascript:LoadDeleteConfirmForm('id0000002');" class="small">Delete</a> |  <a class="small" href="javascript:LoadResetPasswordForm('id0000002');">Reset Password</a></p>
                     </td>
                 </tr>
             </tbody>
         </table>
+
     </div>
 </div>
 
@@ -85,12 +102,28 @@
 </div>
 
 <script>
-
-    function LoadEditAccountForm() {
+    function LoadCreateAccountForm() {
+        var url = '@Url.Action("_AddAccountPartial", "Account")';
+        $.ajax({
+            url: url,
+            type: 'Get',
+            cache: false,
+            success: function (result) {
+                $('#manageaccountmodalcontentid').html(result);
+                $('#manageaccountmodalheaderid').html('Create Account');
+                $("#manageaccountmodalid").modal();
+            },
+            error: function (e) {
+                alert("Something Wrong!");
+            }
+        });
+    }
+    function LoadEditAccountForm(Id) {
         var url = '@Url.Action("UpdateAccount","Account")';
         $.ajax({
             url: url,
             type: 'Get',
+            data: { id: Id },
             cache: false,
             success: function (result) {
                 $('#manageaccountmodalcontentid').html(result);
@@ -103,5 +136,62 @@
         });
     }
 
+    function LoadResetPasswordForm(Id) {
+        var url = '@Url.Action("_ResetPasswordPartial", "Account")';
+        $.ajax({
+            url: url,
+            type: 'Get',
+            data: { id: Id },
+            cache: false,
+            success: function (result) {
+                $('#manageaccountmodalcontentid').html(result);
+                $('#manageaccountmodalheaderid').html('Reset Password');
+                $("#manageaccountmodalid").modal();
+            },
+            error: function (e) {
+                alert("Something Wrong!");
+            }
+        });
+    }
+    function LoadDetailAccountForm(Id) {
+        var url = '@Url.Action("DetailsAccount", "Account")';
+        $.ajax({
+            url: url,
+            type: 'Get',
+            data: { id: Id },
+            cache: false,
+            success: function (result) {
+                $('#manageaccountmodalcontentid').html(result);
+                $('#manageaccountmodalheaderid').html('Detail Account');
+                $("#manageaccountmodalid").modal();
+            },
+            error: function (e) {
+                alert("Something Wrong!");
+            }
+        });
+    }
 
+    function LoadDeleteConfirmForm(Id) {
+        if (confirm("Are you sure?") == true) {
+            var url = '@Url.Action("DeleteConfirm", "Account")';
+                $.ajax({
+                    url: url,
+                    type: 'Post',
+                    data: { id: Id },
+                    cache: false,
+                    success: function (result) {
+                        $('#manageaccountmodalcontentid').html(result);
+                        $('#manageaccountmodalheaderid').html('Deleted Alert');
+                        $("#manageaccountmodalid").modal();
+                    },
+                    error: function (e) {
+                        alert("Something Wrong!");
+                    }
+                });
+        }
+
+       
+
+
+    }
 </script>

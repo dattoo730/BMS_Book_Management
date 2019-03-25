@@ -1,7 +1,8 @@
 ﻿@{
     Layout = null;
-
 }
+
+
 <script>
 
     $("#changeavataformid").validate({
@@ -27,7 +28,7 @@
     $.validator.addMethod("CheckDateOfBirth", function (value, element) {
         var myDate = new Date(value);
         var today = new Date();
-        if (myDate > today) {           
+        if (myDate > today) {
             return false;
         }
         return true;
@@ -140,42 +141,42 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 form-control-label ">Username</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" placeholder="" name="username" value="@ViewBag.AccountID" type="text" readonly>
+                                    <input class="form-control" placeholder="" name="username" value="" type="text">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-4 form-control-label ">Email</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" placeholder="" name="email" value="emailexample@gmail.com" type="email" >
+                                    <input class="form-control" placeholder="" name="email" value="" type="email">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-4 form-control-label ">Full Name</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" placeholder="" name="fullname" value="full name example" type="text" autofocus>
+                                    <input class="form-control" placeholder="" name="fullname" value="" type="text" autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-4 form-control-label">Phone Number</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" placeholder="" name="phone" value="0123456789" type="text" autofocus>
+                                    <input class="form-control" placeholder="" name="phone" value="" type="text" autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-4 form-control-label">Address</label>
                                 <div class="col-sm-8">
-                                    <textarea class="form-control" placeholder="" name="address" value="" type="text" autofocus>244 Binh Thoi st, Ward 5, distrist 11, HCM city</textarea>
+                                    <textarea class="form-control" placeholder="" name="address" value="" type="text" autofocus></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-4 form-control-label">Date of birth</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" placeholder="" name="birthday" type="date" value="1997-09-18" autofocus>
+                                    <input class="form-control" placeholder="" name="birthday" type="date" value="" autofocus>
                                 </div>
                             </div>
 
@@ -198,12 +199,12 @@
                                     </select>
                                 </div>
                             </div>
-                          
-                            <button type="submit" href="#" class="btn btn-lg btn-success btn-block">Update</button>
+
+                            <button type="submit" href="#" class="btn btn-lg btn-success btn-block">Create</button>
 
                         </fieldset>
                     </form>
-                   
+
                 </div>
             </div>
         </div>
