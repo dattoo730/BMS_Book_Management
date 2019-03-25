@@ -2,7 +2,7 @@
 .login-panel {
     margin-top: 25%;
 }
-     
+
 
 #wrapper {
     width: 100%;
@@ -487,15 +487,14 @@ table.dataTable thead .sorting_desc_disabled {
     text-align: right;
     margin-top: 5px
 }
+.img-magin{
+    margin:2px 8px 2px 18px;
+}
+
 /*Dat Customize End*/
-
 /*----------------------DAT - LAYOUT - END  -----------------------*/
-
-
-
 /*----------------------DIENG - ... - BEGIN-----------------------*/
 /*Datatable css*/
-
 .manage-th3 {
     width: 30%;
 }
@@ -514,6 +513,10 @@ table.dataTable thead .sorting_desc_disabled {
 .datatable-padding{
     padding-top: 20px;
     padding-bottom:30px;
+}
+.datatable-padding2 {
+    padding-top: 35px;
+    padding-bottom: 30px;
 }
 
 .arrow-left a {
