@@ -122,7 +122,7 @@ $("#addingbookformid").validate({
             required: true,
             minlength: 5,
             maxlength: 25,
-            NotAcceptedSpecialCharaters: true
+            NameRegex: true
         },
         booksummary: {
             required: true,
@@ -160,7 +160,7 @@ $("#addingbookformid").validate({
             required: "Please provide a book title",
             minlength: "Book title must be at least 5 characters long",
             maxlength: "Book title must be maximum 25 characters long",
-            NotAcceptedSpecialCharaters: "Please enter valid title. No special character allowed. "
+            NameRegex: "Please enter valid title. No special character allowed. "
         },
         booksummary: {
             required: "Please provide a book summary",
@@ -362,6 +362,7 @@ $("#changepasswordformid").validate({
 
 /*----------------------DIENG - ... - BEGIN-----------------------*/
 //Change Category Form Validation
+
 $("#updateCategory").validate({
     rules: {
         Categoryname: {
@@ -421,13 +422,16 @@ $("#AddCategory").validate({
     }
 });
 //Change Book Form Validation
+jQuery.validator.addMethod("NameRegex", function (value, element) {
+    return this.optional(element) || !/^(?:[\p{L}\p{Mn}\p{Pd}\'\x{2019}]+\s[\p{L}\p{Mn}\p{Pd}\'\x{2019}]+\s?)+$/i.test(value);
+}, "Name must contain only letters or space");
 $("#updatingbookformid").validate({
     rules: {
         booktitle: {
             required: true,
             minlength: 5,
             maxlength: 25,
-            NotAcceptedSpecialCharaters: true
+            NameRegex: true
         },
         booksummary: {
             required: true,
@@ -465,7 +469,7 @@ $("#updatingbookformid").validate({
             required: "Please provide a book title",
             minlength: "Book title must be at least 5 characters long",
             maxlength: "Book title must be maximum 25 characters long",
-            NotAcceptedSpecialCharaters: "Please enter valid title. No special character allowed. "
+            NameRegex: "Please enter valid title. No special character allowed. "
         },
         booksummary: {
             required: "Please provide a book summary",
