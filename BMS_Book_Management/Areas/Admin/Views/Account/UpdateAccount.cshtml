@@ -2,6 +2,7 @@
     Layout = null;
 
 }
+@Scripts.Render("~/Content/MyJsAdmin.js");
 <script>
 
     $("#changeavataformid").validate({
@@ -27,7 +28,7 @@
     $.validator.addMethod("CheckDateOfBirth", function (value, element) {
         var myDate = new Date(value);
         var today = new Date();
-        if (myDate > today) {           
+        if (myDate > today) {
             return false;
         }
         return true;
@@ -42,25 +43,29 @@
                 required: true,
                 minlength: 9,
                 maxlength: 50,
-                NotAcceptedSpecialCharaters: true
+                NotAcceptedSpecialCharaters: true,
+                CheckBlank: true
             },
             email: {
                 required: true,
                 minlength: 9,
                 maxlength: 50,
-                email: true
+                email: true,
+                CheckBlank: true
             },
             fullname: {
                 required: true,
                 minlength: 5,
                 maxlength: 20,
-                NameRegex: true
+                NameRegex: true,
+                CheckBlank: true
             },
             phone: {
                 required: true,
                 AllNumberInteger: true,
                 minlength: 10,
                 maxlength: 10
+
             },
             address: {
                 minlength: 5,
@@ -81,19 +86,22 @@
                 required: "Please provide a username",
                 minlength: "Username must be at least 9 characters long",
                 maxlength: "Username must be maximum 50 characters long",
-                NotAcceptedSpecialCharaters: "Please enter valid Username. No special character allowed. "
+                NotAcceptedSpecialCharaters: "Please enter valid Username. No special character allowed. ",
+                CheckBlank: "This field mustn't be empty."
             },
             email: {
                 required: "Please provide a email as username",
                 minlength: "Username must be at least 9 characters long",
                 maxlength: "Username must be maximum 50 characters long",
-                email: "Please enter valid email as a username! "
+                email: "Please enter valid email as a username! ",
+                CheckBlank: "This field mustn't be empty."
             },
             fullname: {
                 required: "Please provide a full name",
                 minlength: "Full name must be at least 5 characters long",
                 maxlength: "Full name must be maximum 20 characters long",
-                NameRegex: "Please enter valid full name. No special character allowed. "
+                NameRegex: "Please enter valid full name. No special character allowed. ",
+               CheckBlank: "This field mustn't be empty."
             },
             phone: {
                 required: "Please provide a phone number",
@@ -147,7 +155,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 form-control-label ">Email</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" placeholder="" name="email" value="emailexample@gmail.com" type="email" >
+                                    <input class="form-control" placeholder="" name="email" value="emailexample@gmail.com" type="email">
                                 </div>
                             </div>
 
@@ -198,12 +206,12 @@
                                     </select>
                                 </div>
                             </div>
-                          
+
                             <button type="submit" href="#" class="btn btn-lg btn-success btn-block">Update</button>
 
                         </fieldset>
                     </form>
-                   
+
                 </div>
             </div>
         </div>

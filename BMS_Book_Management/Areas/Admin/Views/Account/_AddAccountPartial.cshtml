@@ -43,19 +43,22 @@
                 required: true,
                 minlength: 9,
                 maxlength: 50,
-                NotAcceptedSpecialCharaters: true
+                NotAcceptedSpecialCharaters: true,
+                CheckBlank: true
             },
             email: {
                 required: true,
                 minlength: 9,
                 maxlength: 50,
-                email: true
+                email: true,
+                CheckBlank: true
             },
             fullname: {
                 required: true,
                 minlength: 5,
                 maxlength: 20,
-                NameRegex: true
+                NameRegex: true,
+                CheckBlank: true
             },
             phone: {
                 required: true,
@@ -82,19 +85,22 @@
                 required: "Please provide a username",
                 minlength: "Username must be at least 9 characters long",
                 maxlength: "Username must be maximum 50 characters long",
-                NotAcceptedSpecialCharaters: "Please enter valid Username. No special character allowed. "
+                NotAcceptedSpecialCharaters: "Please enter valid Username. No special character allowed. ",
+                CheckBlank: "This field mustn't be empty."
             },
             email: {
                 required: "Please provide a email as username",
                 minlength: "Username must be at least 9 characters long",
                 maxlength: "Username must be maximum 50 characters long",
-                email: "Please enter valid email as a username! "
+                email: "Please enter valid email as a username! ",
+                CheckBlank: "This field mustn't be empty."
             },
             fullname: {
                 required: "Please provide a full name",
                 minlength: "Full name must be at least 5 characters long",
                 maxlength: "Full name must be maximum 20 characters long",
-                NameRegex: "Please enter valid full name. No special character allowed. "
+                NameRegex: "Please enter valid full name. No special character allowed. ",
+                CheckBlank: "This field mustn't be empty."
             },
             phone: {
                 required: "Please provide a phone number",
@@ -211,3 +217,4 @@
     </div>
 </div>
 
+@Scripts.Render("~/Content/MyJsAdmin.js");

@@ -114,7 +114,14 @@ $.validator.addMethod("AllNumberInteger", function (value, element) {
 
 $.validator.addMethod("NotAcceptedSpecialCharaters", function (value, element) {
     return this.optional(element) || /^\w+$/i.test(value);
-}, );
+});
+$.validator.addMethod("CheckBlank", function (value, element) {
+    var patterncheck = /[a-zA-Z]/;
+    if (value == "" || !value.match(patterncheck)) {      
+        return false;
+    } else
+        return true;
+});
 
 $("#addingbookformid").validate({
     rules: {
@@ -122,12 +129,14 @@ $("#addingbookformid").validate({
             required: true,
             minlength: 5,
             maxlength: 25,
-            NameRegex: true
+            NameRegex: true,
+            CheckBlank: true
         },
         booksummary: {
             required: true,
             minlength: 10,
             maxlength: 200,
+            CheckBlank: true
         },
         bookcategory: {
             required: true,
@@ -160,12 +169,14 @@ $("#addingbookformid").validate({
             required: "Please provide a book title",
             minlength: "Book title must be at least 5 characters long",
             maxlength: "Book title must be maximum 25 characters long",
-            NameRegex: "Please enter valid title. No special character allowed. "
+            NameRegex: "Please enter valid title. No special character allowed. ",
+            CheckBlank: "This field mustn't be empty."
         },
         booksummary: {
             required: "Please provide a book summary",
             minlength: "Book summary must be at least 10 characters long",
-            maxlength: "Book summary must be maximum 200 characters long"
+            maxlength: "Book summary must be maximum 200 characters long",
+            CheckBlank: "This field mustn't be empty."
         },
         bookcategory: {
             required: "Please provide a book category",
@@ -207,18 +218,21 @@ $("#addingbookformid").validate({
                 required: true,
                 minlength: 9,
                 maxlength: 50,
-                NotAcceptedSpecialCharaters: true
+                NotAcceptedSpecialCharaters: true,
+                CheckBlank: true
             },
             email: {
                 required: true,
                 minlength: 9,
                 maxlength: 50,
-                email: true
+                email: true,
+                CheckBlank: true
         },
             password: {
                 required: true,
                 minlength: 8,
                 maxlength: 20,
+                CheckBlank: true
             },
             repassword: {
                 required: true,               
@@ -232,18 +246,21 @@ $("#addingbookformid").validate({
                 required: "Please provide a username",
                 minlength: "Username must be at least 9 characters long",
                 maxlength: "Username must be maximum 50 characters long",
-                NotAcceptedSpecialCharaters: "Please enter valid Username. No special character allowed. "
+                NotAcceptedSpecialCharaters: "Please enter valid Username. No special character allowed. ",
+                CheckBlank: "This field mustn't be empty."
             },
             email: {
                 required: "Please provide a email as username",
                 minlength: "Username must be at least 9 characters long",
                 maxlength: "Username must be maximum 50 characters long",
-                email: "Please enter valid email as a username! "
+                email: "Please enter valid email as a username! ",
+                CheckBlank: "This field mustn't be empty."
         },
             password: {
                 required: "Please provide a password",
                 minlength: "Password must be at least 8 characters long",
-                maxlength: "Password must be maximum 20 characters long"
+                maxlength: "Password must be maximum 20 characters long",
+                CheckBlank: "This field mustn't be empty."
             }, repassword: {
                 required: "Please provide a Re-password",
                 equalTo: "Password and Re-Password doesn't match!"
@@ -264,12 +281,14 @@ $("#loginformid").validate({
             required: true,
             minlength: 9,
             maxlength: 50,
-            email: true
+            email: true,
+            CheckBlank: true
         },
         password: {
             required: true,
             minlength: 8,
             maxlength: 20,
+            CheckBlank: true
         },
 
     },
@@ -279,12 +298,14 @@ $("#loginformid").validate({
             required: "Please provide a email as username",
             minlength: "Username must be at least 9 characters long",
             maxlength: "Username must be maximum 50 characters long",
-            email: "Please enter valid email as a username! "
+            email: "Please enter valid email as a username! ",
+            CheckBlank: "This field mustn't be empty."
         },
         password: {
             required: "Please provide a password",
             minlength: "Password must be at least 8 characters long",
-            maxlength: "Password must be maximum 20 characters long"
+            maxlength: "Password must be maximum 20 characters long",
+            CheckBlank: "This field mustn't be empty."
         }
     },
 
@@ -324,12 +345,14 @@ $("#changeavataformid").validate({
 $("#changepasswordformid").validate({
     rules: {
         oldpassword: {
-            required: true            
+            required: true,
+            CheckBlank: true
         },
         newpassword: {
             required: true,
             minlength: 8,
             maxlength: 20,
+            CheckBlank: true
         },
         renewpassword: {
             required: true,
@@ -339,12 +362,14 @@ $("#changepasswordformid").validate({
 
     messages: {
         oldpassword: {
-            required: "Please provide a current password"
+            required: "Please provide a current password",
+            CheckBlank: "This field mustn't be empty."
         },
         newpassword: {
             required: "Please provide a new password",
             minlength: "New Password must be at least 8 characters long",
-            maxlength: "New Password must be maximum 20 characters long"
+            maxlength: "New Password must be maximum 20 characters long",
+            CheckBlank: "This field mustn't be empty."
         },
         renewpassword: {
             required: "Please provide a Re-password",
@@ -369,21 +394,25 @@ $("#updateCategory").validate({
             required: true,
             minlength: 8,
             maxlength: 30,
+            CheckBlank: true
         },
         DescripCategory: {
             required: true,
             minlength: 20,
+            CheckBlank: true
         }
     },
     messages: {
         Categoryname: {
             required: "Please provide a category name",
             minlength: "Category name must be at least 8 characters long",
-            maxlength: "Category name must be maximum 30 characters long"
+            maxlength: "Category name must be maximum 30 characters long",
+            CheckBlank: "This field mustn't be empty."
         },
         DescripCategory: {
             required: "Please provide description",
             minlength: "Description must be at least 8 characters long",
+            CheckBlank: "This field mustn't be empty."
         }
     },
     submitHandler: function (form) {
@@ -399,21 +428,25 @@ $("#AddCategory").validate({
             required: true,
             minlength: 8,
             maxlength: 30,
+            CheckBlank: true
         },
         DescripCategory: {
             required: true,
             minlength: 20,
+            CheckBlank: true
         }
     },
     messages: {
         Categoryname: {
             required: "Please provide a category name",
             minlength: "Category name must be at least 8 characters long",
-            maxlength: "Category name must be maximum 30 characters long"
+            maxlength: "Category name must be maximum 30 characters long",
+            CheckBlank: "This field mustn't be empty."
         },
         DescripCategory: {
             required: "Please provide description",
             minlength: "Description must be at least 8 characters long",
+            CheckBlank: "This field mustn't be empty."
         }
     },
     submitHandler: function (form) {
@@ -431,12 +464,14 @@ $("#updatingbookformid").validate({
             required: true,
             minlength: 5,
             maxlength: 25,
-            NameRegex: true
+            NameRegex: true,
+            CheckBlank: true
         },
         booksummary: {
             required: true,
             minlength: 10,
             maxlength: 200,
+            CheckBlank: true
         },
         bookcategory: {
             required: true,
@@ -469,12 +504,14 @@ $("#updatingbookformid").validate({
             required: "Please provide a book title",
             minlength: "Book title must be at least 5 characters long",
             maxlength: "Book title must be maximum 25 characters long",
-            NameRegex: "Please enter valid title. No special character allowed. "
+            NameRegex: "Please enter valid title. No special character allowed. ",
+            CheckBlank: "This field mustn't be empty."
         },
         booksummary: {
             required: "Please provide a book summary",
             minlength: "Book summary must be at least 10 characters long",
-            maxlength: "Book summary must be maximum 200 characters long"
+            maxlength: "Book summary must be maximum 200 characters long",
+             CheckBlank: "This field mustn't be empty."
         },
         bookcategory: {
             required: "Please provide a book category",
