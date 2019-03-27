@@ -101,7 +101,7 @@
 #logo {
     width: 238px;
     float: left;
-    display: inline;
+    /*display: inline;*/
     margin-left: -4px;
     position: relative;
 }
