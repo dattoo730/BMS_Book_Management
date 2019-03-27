@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e11334522abb47f9b5e32c7ad6133218" Name="Diagram1">
+      <Diagram DiagramId="65ca2d22651648dfa9caac9e0ab8f42f" Name="Diagram1">
         <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.AspNetRole" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
