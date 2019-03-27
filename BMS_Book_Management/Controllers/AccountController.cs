@@ -14,10 +14,18 @@ namespace BMS_Book_Management.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult EditProfile()
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult EditProfile(int id)
+        {
+            return View();
+        }
+
         public ActionResult _ChangePasswordPartial()
         {
             return View();

@@ -163,6 +163,63 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AspNetIdentity\IdentityModels.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BMS_DB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BMS_DB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BMS_DB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BMS_DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BMS_DB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Book.cs">
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Comment.cs">
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DetailOrder.cs">
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StatusObject.cs">
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -260,6 +317,16 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\BMS_DB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BMS_DB.edmx</DependentUpon>
+      <LastGenOutput>BMS_DB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\BMS_DB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BMS_DB.edmx</DependentUpon>
+      <LastGenOutput>BMS_DB.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-3.1.1\css\bootstrap-theme.css.map" />
@@ -334,6 +401,13 @@
     <Content Include="Areas\Admin\Views\Account\DeleteConfirm.cshtml" />
     <Content Include="Areas\Admin\Views\Account\_AddAccountPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Comment\ReplyComment.cshtml" />
+    <EntityDeploy Include="Models\BMS_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BMS_DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BMS_DB.edmx.diagram">
+      <DependentUpon>BMS_DB.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
