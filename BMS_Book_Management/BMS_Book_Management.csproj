@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -132,12 +140,60 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommentController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BMS_BookManagementDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BMS_BookManagementDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BMS_BookManagementDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BMS_BookManagementDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BMS_BookManagementDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Book.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Comment.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\DetailsBookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetailOrder.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatusObject.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Antlr3.Runtime.dll" />
@@ -168,6 +224,16 @@
     <Content Include="bin\System.Web.WebPages.Razor.xml" />
     <Content Include="bin\System.Web.WebPages.xml" />
     <Content Include="bin\WebGrease.dll" />
+    <Content Include="BMS_BookManagementDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BMS_BookManagementDB.Context.cs</LastGenOutput>
+      <DependentUpon>BMS_BookManagementDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="BMS_BookManagementDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BMS_BookManagementDB.edmx</DependentUpon>
+      <LastGenOutput>BMS_BookManagementDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\additional-methods.min.js" />
     <Content Include="Content\bootstrap-3.1.1\css\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-3.1.1\css\bootstrap-theme.min.css" />
@@ -308,6 +374,13 @@
     <Content Include="Areas\Admin\Views\Account\DeleteConfirm.cshtml" />
     <Content Include="Areas\Admin\Views\Account\_AddAccountPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Comment\ReplyComment.cshtml" />
+    <EntityDeploy Include="BMS_BookManagementDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BMS_BookManagementDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="BMS_BookManagementDB.edmx.diagram">
+      <DependentUpon>BMS_BookManagementDB.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -350,6 +423,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
