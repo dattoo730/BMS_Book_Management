@@ -25,7 +25,7 @@ namespace BMS_Book_Management.Models
         public Nullable<int> CategoryID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string Author { get; set; }
+        public Nullable<int> AuthorID { get; set; }
         public string Picture { get; set; }
         public string ISBN { get; set; }
         public Nullable<int> Price { get; set; }
@@ -34,6 +34,7 @@ namespace BMS_Book_Management.Models
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public Nullable<int> StatusID { get; set; }
     
+        public virtual Author Author { get; set; }
         public virtual Category Category { get; set; }
         public virtual StatusObject StatusObject { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

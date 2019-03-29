@@ -669,4 +669,47 @@ function DetailsCategory() {
     });
 }
 
+//format view table
+$(document).ready(function () {
+    $('#dataTables-ManageBook').DataTable();
+    $('#dataTables-Manageaccount').DataTable();
+    $('#managecommenttableid').DataTable();
+    $('#dataTables-Manageoders').DataTable();
+    $('#dataTables-detailorder').DataTable();
+});
+
+//Show details order
+function ShowDetailOrder(id) {
+    $.ajax({
+        url: "/Admin/Order/DetailOrder",
+        type: 'Get',
+        data: { id: id },
+
+        success: function (result) {
+            $('#manageorder').html(result);
+
+        },
+        error: function (xhr) {
+            console.log(xhr.responseText);
+            alert("Error has occurred..");
+        }
+    });
+}
+//Get order
+function GetOrder(id) {
+    $.ajax({
+        url: "/Admin/Order/UpdateStatus",
+        type: 'Get',
+        data: { id: id },
+
+        success: function (result) {
+            $('#manageorder').html(result);
+
+        },
+        error: function (xhr) {
+            console.log(xhr.responseText);
+            alert("Error has occurred..");
+        }
+    });
+}
 /*----------------------DIENG - ... - END  -----------------------*/

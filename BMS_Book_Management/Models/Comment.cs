@@ -16,13 +16,14 @@ namespace BMS_Book_Management.Models
     {
         public int CommentID { get; set; }
         public Nullable<int> BookID { get; set; }
-        public string UserName { get; set; }
+        public string UserId { get; set; }
         public Nullable<int> ParentID { get; set; }
         public string CommentContent { get; set; }
         public Nullable<bool> IsReply { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> StatusID { get; set; }
     
+        public virtual AspNetUser AspNetUser { get; set; }
         public virtual Book Book { get; set; }
         public virtual StatusObject StatusObject { get; set; }
     }

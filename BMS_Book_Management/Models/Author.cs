@@ -12,20 +12,22 @@ namespace BMS_Book_Management.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class Author
     {
-        public int OrderID { get; set; }
-        public string UserId { get; set; }
-        public string RecipientAddress { get; set; }
-        public string RecipientPhone { get; set; }
-        public string RecipientName { get; set; }
-        public Nullable<int> TotalValue { get; set; }
-        public string OrderNote { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Author()
+        {
+            this.Books = new HashSet<Book>();
+        }
+    
+        public int AuthorID { get; set; }
+        public string AuthorName { get; set; }
+        public string Description { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> StatusID { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
-        public virtual DetailOrder DetailOrder { get; set; }
         public virtual StatusObject StatusObject { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Book> Books { get; set; }
     }
 }
