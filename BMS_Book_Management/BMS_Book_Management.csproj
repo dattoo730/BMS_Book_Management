@@ -46,33 +46,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
-    </Reference>
-    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
-      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -154,7 +133,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
@@ -162,6 +140,8 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommentController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Models\CommentsViewModel.cs" />
     <Compile Include="Areas\Admin\Models\DetailOrderModel.cs" />
@@ -174,18 +154,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903260912071_InitialCreate.cs" />
-    <Compile Include="Migrations\201903260912071_InitialCreate.Designer.cs">
-      <DependentUpon>201903260912071_InitialCreate.cs</DependentUpon>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903260915314_InitialCreate1.cs" />
-    <Compile Include="Migrations\201903260915314_InitialCreate1.Designer.cs">
-      <DependentUpon>201903260915314_InitialCreate1.cs</DependentUpon>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AspNetIdentity\IdentityModels.cs" />
-    <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>BMS_DB.tt</DependentUpon>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUser.cs">
       <DependentUpon>BMS_DB.tt</DependentUpon>
@@ -196,49 +172,46 @@
     <Compile Include="Models\AspNetUserLogin.cs">
       <DependentUpon>BMS_DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Author.cs">
-      <DependentUpon>BMS_DB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\BMS_DB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BMS_DB.Context.tt</DependentUpon>
+      <DependentUpon>BMS_BookManagementDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BMS_DB.cs">
+    <Compile Include="BMS_BookManagementDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BMS_DB.tt</DependentUpon>
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BMS_DB.Designer.cs">
+    <Compile Include="BMS_BookManagementDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BMS_DB.edmx</DependentUpon>
+      <DependentUpon>BMS_BookManagementDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Book.cs">
+    <Compile Include="Book.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Comment.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>BMS_DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Category.cs">
-      <DependentUpon>BMS_DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Comment.cs">
-      <DependentUpon>BMS_DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\C__MigrationHistory.cs">
-      <DependentUpon>BMS_DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DetailOrder.cs">
-      <DependentUpon>BMS_DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Order.cs">
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>BMS_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StatusObject.cs">
       <DependentUpon>BMS_DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>BMS_DB.tt</DependentUpon>
+    <Compile Include="Order.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatusObject.cs">
+      <DependentUpon>BMS_BookManagementDB.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Antlr3.Runtime.dll" />
@@ -269,6 +242,16 @@
     <Content Include="bin\System.Web.WebPages.Razor.xml" />
     <Content Include="bin\System.Web.WebPages.xml" />
     <Content Include="bin\WebGrease.dll" />
+    <Content Include="BMS_BookManagementDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BMS_BookManagementDB.Context.cs</LastGenOutput>
+      <DependentUpon>BMS_BookManagementDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="BMS_BookManagementDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BMS_BookManagementDB.edmx</DependentUpon>
+      <LastGenOutput>BMS_BookManagementDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\additional-methods.min.js" />
     <Content Include="Content\bootstrap-3.1.1\css\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-3.1.1\css\bootstrap-theme.min.css" />
@@ -335,16 +318,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\BMS_DB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BMS_DB.edmx</DependentUpon>
-      <LastGenOutput>BMS_DB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\BMS_DB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BMS_DB.edmx</DependentUpon>
-      <LastGenOutput>BMS_DB.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-3.1.1\css\bootstrap-theme.css.map" />
@@ -419,15 +392,12 @@
     <Content Include="Areas\Admin\Views\Account\DeleteConfirm.cshtml" />
     <Content Include="Areas\Admin\Views\Account\_AddAccountPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Comment\ReplyComment.cshtml" />
-    <Content Include="Areas\Admin\Views\Order\DetailOrder.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\ManageOrder.cshtml" />
-    <Content Include="Areas\Admin\Views\Order\UpdateStatus.cshtml" />
     <EntityDeploy Include="Models\BMS_DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BMS_DB.Designer.cs</LastGenOutput>
+      <LastGenOutput>BMS_BookManagementDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\BMS_DB.edmx.diagram">
-      <DependentUpon>BMS_DB.edmx</DependentUpon>
+    <Content Include="BMS_BookManagementDB.edmx.diagram">
+      <DependentUpon>BMS_BookManagementDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -440,9 +410,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -459,11 +427,10 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\DetailsBook\DetailBook.cshtml" />
-    <Content Include="Views\Account\EditProfile.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -476,14 +443,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903260912071_InitialCreate.resx">
-      <DependentUpon>201903260912071_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903260915314_InitialCreate1.resx">
-      <DependentUpon>201903260915314_InitialCreate1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
