@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace BMS_Book_Management.Areas.Admin.Controllers
 {
+
     public class AccountController : Controller
     {
         // GET: Admin/Account

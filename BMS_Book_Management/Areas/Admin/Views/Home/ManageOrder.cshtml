@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Manage Orders";
+
+}
+@model List<BMS_Book_Management.Areas.Admin.Models.OrdersViewModel>
+
+<div id="manageorder">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header"><h2>Manage Orders</h2></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 datatable-padding">
+            <table class="table table-responsive table-hover manage-datatable" id="dataTables-Manageoders">
+                <thead>
+                    <tr>
+                        <th>OrderID</th>
+                        <th>Username</th>
+                        <th>Total price</th>
+                        <th>Created Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var i in Model)
+                    {
+                        <tr class="gradeA">
+                            <td>@i.OrderID</td>
+                            <td>@i.UserName</td>
+                            <td>@i.TotalValue</td>
+                            <td>@i.CreatedDate</td>
+                            <td>@i.Status</td>
+                            <td>
+                                <p><a class="small" onclick="ShowDetailOrder(@i.OrderID);">Details </a>
+                                @if (i.Status.Equals("Delivering") || i.Status.Equals("Ordered")) {
+                                     <a class="small" onclick="GetOrder(@i.OrderID);">| Update</a>
+                                }           
+                                </p>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -162,6 +162,12 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommentController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Admin\Models\CommentsViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\DetailOrderModel.cs" />
+    <Compile Include="Areas\Admin\Models\DetailOrderViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\OrderModel.cs" />
+    <Compile Include="Areas\Admin\Models\OrdersViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DetailsBookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -188,6 +194,9 @@
       <DependentUpon>BMS_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>BMS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Author.cs">
       <DependentUpon>BMS_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BMS_DB.Context.cs">
@@ -221,12 +230,6 @@
       <DependentUpon>BMS_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Order.cs">
-      <DependentUpon>BMS_DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>BMS_DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>BMS_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StatusObject.cs">
@@ -416,6 +419,9 @@
     <Content Include="Areas\Admin\Views\Account\DeleteConfirm.cshtml" />
     <Content Include="Areas\Admin\Views\Account\_AddAccountPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Comment\ReplyComment.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\DetailOrder.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\ManageOrder.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\UpdateStatus.cshtml" />
     <EntityDeploy Include="Models\BMS_DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BMS_DB.Designer.cs</LastGenOutput>
@@ -458,7 +464,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
