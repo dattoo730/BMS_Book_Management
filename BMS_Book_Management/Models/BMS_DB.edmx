@@ -64,22 +64,33 @@
           <Property Name="LockoutEndDateUtc" Type="datetime" />
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="FullName" Type="nvarchar" MaxLength="50" />
           <Property Name="Address" Type="text" />
           <Property Name="Birthday" Type="date" />
           <Property Name="Gender" Type="int" />
+          <Property Name="StatusID" Type="int" />
+          <Property Name="Avatar" Type="text" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="AuthorID" />
+          </Key>
+          <Property Name="AuthorID" Type="int" Nullable="false" />
+          <Property Name="AuthorName" Type="ntext" />
+          <Property Name="Description" Type="ntext" />
+          <Property Name="CreatedDate" Type="datetime" />
           <Property Name="StatusID" Type="int" />
         </EntityType>
         <EntityType Name="Book">
           <Key>
             <PropertyRef Name="BookID" />
           </Key>
-          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="BookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryID" Type="int" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" />
-          <Property Name="Description" Type="nvarchar" MaxLength="200" />
-          <Property Name="Author" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="ntext" />
+          <Property Name="AuthorID" Type="int" />
           <Property Name="Picture" Type="text" />
           <Property Name="ISBN" Type="nchar" MaxLength="13" />
           <Property Name="Price" Type="int" />
@@ -92,20 +103,20 @@
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
-          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
-          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="ntext" />
           <Property Name="StatusID" Type="int" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="CommentID" />
           </Key>
-          <Property Name="CommentID" Type="int" Nullable="false" />
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BookID" Type="int" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
           <Property Name="ParentID" Type="int" />
-          <Property Name="CommentContent" Type="nvarchar" MaxLength="200" />
+          <Property Name="CommentContent" Type="ntext" />
           <Property Name="IsReply" Type="bit" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="StatusID" Type="int" />
@@ -124,8 +135,8 @@ warning 6002: The table/view 'BMS_Book_ManagementDB.dbo.DetailOrder' does not ha
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
-          <Property Name="OrderID" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
           <Property Name="RecipientAddress" Type="text" />
           <Property Name="RecipientPhone" Type="nvarchar" MaxLength="10" />
           <Property Name="RecipientName" Type="nvarchar" MaxLength="50" />
@@ -165,6 +176,30 @@ warning 6002: The table/view 'BMS_Book_ManagementDB.dbo.DetailOrder' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Author_StatusObject">
+          <End Role="StatusObject" Type="Self.StatusObject" Multiplicity="0..1" />
+          <End Role="Author" Type="Self.Author" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusObject">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Author">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Book">
+          <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="AuthorID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="AuthorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Book_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Book" Type="Self.Book" Multiplicity="*" />
@@ -201,9 +236,18 @@ warning 6002: The table/view 'BMS_Book_ManagementDB.dbo.DetailOrder' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK_Comment_AspNetUsers' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK_Comment_AspNetUsers" />-->
+        <Association Name="FK_Comment_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Comment_Book">
           <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
@@ -308,9 +352,18 @@ warning 6035: The relationship 'FK_Comment_AspNetUsers' has columns that are not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK_Order_AspNetUsers" />-->
+        <Association Name="FK_Order_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Order_Order">
           <End Role="StatusObject" Type="Self.StatusObject" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
@@ -361,6 +414,7 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
@@ -378,6 +432,14 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
             <End Role="StatusObject" EntitySet="StatusObject" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <AssociationSet Name="FK_Author_StatusObject" Association="Self.FK_Author_StatusObject">
+            <End Role="StatusObject" EntitySet="StatusObject" />
+            <End Role="Author" EntitySet="Author" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Book" Association="Self.FK_Book_Book">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
           <AssociationSet Name="FK_Book_Category" Association="Self.FK_Book_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="Book" EntitySet="Book" />
@@ -389,6 +451,10 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
           <AssociationSet Name="FK_Category_StatusObject" Association="Self.FK_Category_StatusObject">
             <End Role="StatusObject" EntitySet="StatusObject" />
             <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_AspNetUsers" Association="Self.FK_Comment_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
           <AssociationSet Name="FK_Comment_Book" Association="Self.FK_Comment_Book">
             <End Role="Book" EntitySet="Book" />
@@ -421,6 +487,10 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
           <AssociationSet Name="FK_DetailOrder_Order" Association="Self.FK_DetailOrder_Order">
             <End Role="Order" EntitySet="Order" />
             <End Role="DetailOrder" EntitySet="DetailOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_AspNetUsers" Association="Self.FK_Order_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Order" Association="Self.FK_Order_Order">
             <End Role="StatusObject" EntitySet="StatusObject" />
@@ -486,26 +556,41 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
           <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Birthday" Type="DateTime" Precision="0" />
           <Property Name="Gender" Type="Int32" />
           <Property Name="StatusID" Type="Int32" />
+          <Property Name="Avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="StatusObject" Relationship="Self.FK_AspNetUsers_StatusObject" FromRole="AspNetUsers" ToRole="StatusObject" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_AspNetUsers" FromRole="AspNetUsers" ToRole="Comment" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_AspNetUsers" FromRole="AspNetUsers" ToRole="Order" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="AuthorID" />
+          </Key>
+          <Property Name="AuthorID" Type="Int32" Nullable="false" />
+          <Property Name="AuthorName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="StatusID" Type="Int32" />
+          <NavigationProperty Name="StatusObject" Relationship="Self.FK_Author_StatusObject" FromRole="Author" ToRole="StatusObject" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Book_Book" FromRole="Author" ToRole="Book" />
         </EntityType>
         <EntityType Name="Book">
           <Key>
             <PropertyRef Name="BookID" />
           </Key>
-          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="BookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryID" Type="Int32" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorID" Type="Int32" />
           <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ISBN" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
           <Property Name="Price" Type="Int32" />
@@ -513,6 +598,7 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="StatusID" Type="Int32" />
+          <NavigationProperty Name="Author" Relationship="Self.FK_Book_Book" FromRole="Book" ToRole="Author" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Book_Category" FromRole="Book" ToRole="Category" />
           <NavigationProperty Name="StatusObject" Relationship="Self.FK_Book_StatusObject" FromRole="Book" ToRole="StatusObject" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_Book" FromRole="Book" ToRole="Comment" />
@@ -522,9 +608,9 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
-          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="StatusID" Type="Int32" />
           <NavigationProperty Name="Books" Relationship="Self.FK_Book_Category" FromRole="Category" ToRole="Book" />
           <NavigationProperty Name="StatusObject" Relationship="Self.FK_Category_StatusObject" FromRole="Category" ToRole="StatusObject" />
@@ -533,14 +619,15 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
           <Key>
             <PropertyRef Name="CommentID" />
           </Key>
-          <Property Name="CommentID" Type="Int32" Nullable="false" />
+          <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BookID" Type="Int32" />
-          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ParentID" Type="Int32" />
-          <Property Name="CommentContent" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CommentContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsReply" Type="Boolean" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="StatusID" Type="Int32" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Comment_AspNetUsers" FromRole="Comment" ToRole="AspNetUsers" />
           <NavigationProperty Name="Book" Relationship="Self.FK_Comment_Book" FromRole="Comment" ToRole="Book" />
           <NavigationProperty Name="StatusObject" Relationship="Self.FK_Comment_StatusObject" FromRole="Comment" ToRole="StatusObject" />
         </EntityType>
@@ -548,8 +635,8 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
-          <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="RecipientAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="RecipientPhone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="RecipientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -557,6 +644,7 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
           <Property Name="OrderNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="StatusID" Type="Int32" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Order_AspNetUsers" FromRole="Order" ToRole="AspNetUsers" />
           <NavigationProperty Name="DetailOrder" Relationship="Self.FK_DetailOrder_Order" FromRole="Order" ToRole="DetailOrder" />
           <NavigationProperty Name="StatusObject" Relationship="Self.FK_Order_Order" FromRole="Order" ToRole="StatusObject" />
         </EntityType>
@@ -569,6 +657,7 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
           <Property Name="Action" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_StatusObject" FromRole="StatusObject" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Authors" Relationship="Self.FK_Author_StatusObject" FromRole="StatusObject" ToRole="Author" />
           <NavigationProperty Name="Books" Relationship="Self.FK_Book_StatusObject" FromRole="StatusObject" ToRole="Book" />
           <NavigationProperty Name="Categories" Relationship="Self.FK_Category_StatusObject" FromRole="StatusObject" ToRole="Category" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_StatusObject" FromRole="StatusObject" ToRole="Comment" />
@@ -631,6 +720,54 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
             </Principal>
             <Dependent Role="AspNetUsers">
               <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Author_StatusObject">
+          <End Role="StatusObject" Type="Self.StatusObject" Multiplicity="0..1" />
+          <End Role="Author" Type="Self.Author" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusObject">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Author">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Book">
+          <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="AuthorID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="AuthorID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -740,6 +877,7 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Authors" EntityType="Self.Author" />
           <EntitySet Name="Books" EntityType="Self.Book" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Comments" EntityType="Self.Comment" />
@@ -758,6 +896,22 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
           <AssociationSet Name="FK_AspNetUsers_StatusObject" Association="Self.FK_AspNetUsers_StatusObject">
             <End Role="StatusObject" EntitySet="StatusObjects" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_AspNetUsers" Association="Self.FK_Comment_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_AspNetUsers" Association="Self.FK_Order_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Author_StatusObject" Association="Self.FK_Author_StatusObject">
+            <End Role="StatusObject" EntitySet="StatusObjects" />
+            <End Role="Author" EntitySet="Authors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Book" Association="Self.FK_Book_Book">
+            <End Role="Author" EntitySet="Authors" />
+            <End Role="Book" EntitySet="Books" />
           </AssociationSet>
           <AssociationSet Name="FK_Book_Category" Association="Self.FK_Book_Category">
             <End Role="Category" EntitySet="Categories" />
@@ -811,11 +965,11 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BMS_Book_ManagementDBModel.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BMS_Book_ManagementDBModel.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -826,17 +980,6 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -900,6 +1043,18 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="BMS_Book_ManagementDBModel.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -910,7 +1065,7 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
                 <ScalarProperty Name="Picture" ColumnName="Picture" />
                 <ScalarProperty Name="ISBN" ColumnName="ISBN" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
@@ -936,7 +1091,7 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
               <MappingFragment StoreEntitySet="Comment">
                 <ScalarProperty Name="CommentID" ColumnName="CommentID" />
                 <ScalarProperty Name="BookID" ColumnName="BookID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ParentID" ColumnName="ParentID" />
                 <ScalarProperty Name="CommentContent" ColumnName="CommentContent" />
                 <ScalarProperty Name="IsReply" ColumnName="IsReply" />
@@ -949,7 +1104,7 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
             <EntityTypeMapping TypeName="BMS_Book_ManagementDBModel.Order">
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="RecipientAddress" ColumnName="RecipientAddress" />
                 <ScalarProperty Name="RecipientPhone" ColumnName="RecipientPhone" />
                 <ScalarProperty Name="RecipientName" ColumnName="RecipientName" />
@@ -1001,25 +1156,8 @@ warning 6035: The relationship 'FK_Order_AspNetUsers' has columns that are not p
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="BMS_Book_ManagementDBModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="BMS_Book_ManagementDBModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="BMS_Book_ManagementDBModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="BMS_Book_ManagementDBModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BMS_Book_ManagementDBModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="BMS_Book_ManagementDBModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BMS_Book_ManagementDBModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="BMS_Book_ManagementDBModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="BMS_Book_ManagementDBModel.Store.sp_helpdiagrams" />
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BMS_Book_ManagementDBModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BMS_Book_ManagementDBModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>

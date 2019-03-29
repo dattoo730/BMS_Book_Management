@@ -4,22 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="65ca2d22651648dfa9caac9e0ab8f42f" Name="Diagram1">
+      <Diagram DiagramId="29ba74588e834e4e8c28f635dd034b60" Name="Diagram1">
         <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.AspNetRole" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.AspNetUser" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.Book" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.Category" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.Comment" Width="1.5" PointX="7.5" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.Order" Width="1.5" PointX="3" PointY="21.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.StatusObject" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.AspNetRole" Width="1.5" PointX="3.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.AspNetUserClaim" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.AspNetUserLogin" Width="1.5" PointX="8.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.AspNetUser" Width="1.5" PointX="6" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.Author" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.Book" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.Category" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.Comment" Width="1.5" PointX="8.25" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.Order" Width="1.5" PointX="11.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.StatusObject" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.DetailOrder" Width="1.5" PointX="7.5" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMS_Book_ManagementDBModel.DetailOrder" Width="1.5" PointX="13.5" PointY="11.875" IsExpanded="true" />
         <AssociationConnector Association="BMS_Book_ManagementDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="BMS_Book_ManagementDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="BMS_Book_ManagementDBModel.FK_AspNetUsers_StatusObject" ManuallyRouted="false" />
+        <AssociationConnector Association="BMS_Book_ManagementDBModel.FK_Comment_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="BMS_Book_ManagementDBModel.FK_Order_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="BMS_Book_ManagementDBModel.FK_Author_StatusObject" ManuallyRouted="false" />
+        <AssociationConnector Association="BMS_Book_ManagementDBModel.FK_Book_Book" ManuallyRouted="false" />
         <AssociationConnector Association="BMS_Book_ManagementDBModel.FK_Book_Category" ManuallyRouted="false" />
         <AssociationConnector Association="BMS_Book_ManagementDBModel.FK_Book_StatusObject" ManuallyRouted="false" />
         <AssociationConnector Association="BMS_Book_ManagementDBModel.FK_Comment_Book" ManuallyRouted="false" />

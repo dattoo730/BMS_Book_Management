@@ -18,6 +18,7 @@ namespace BMS_Book_Management.Models
         public StatusObject()
         {
             this.AspNetUsers = new HashSet<AspNetUser>();
+            this.Authors = new HashSet<Author>();
             this.Books = new HashSet<Book>();
             this.Categories = new HashSet<Category>();
             this.Comments = new HashSet<Comment>();
@@ -31,6 +32,8 @@ namespace BMS_Book_Management.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Author> Authors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book> Books { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
